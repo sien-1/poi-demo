@@ -14,10 +14,12 @@
       .on-dark { fill: #f0d7a8; }
       .card-title { font-size: 20px; font-weight: 700; }
       .body { font-size: 15px; fill: #526865; }
-      .small { font-size: 12px; fill: #7c8f8b; }
+      .small { font-size: 12px; fill: #607773; }
+      .on-dark-body { fill: #d7e5e1; }
+      .on-dark-small { fill: #b5ccc6; }
       .step { font-size: 16px; font-weight: 700; }
       .module-title { font-size: 17px; font-weight: 700; }
-      .module-body { font-size: 13px; fill: #657b77; }
+      .module-body { font-size: 13px; fill: #3f5a56; }
       .footer { font-size: 12px; fill: #8fa29e; }
     </style>
   </defs>
@@ -60,7 +62,7 @@
   <rect x="60" y="402" width="1280" height="120" rx="20" fill="#102a35"/>
   <text x="90" y="437" class="section on-dark">02  产品定位</text>
   <text x="90" y="476" class="card-title" fill="#ffffff">面向 POI 人群的全生命周期数字疗法框架</text>
-  <text x="90" y="503" class="body" fill="#b8ceca">把指南与政策要求转化为可执行、可追踪、可反馈的院外照护任务；诊断与治疗决策由医生确认。</text>
+  <text x="90" y="503" class="body on-dark-body">把指南与政策要求转化为可执行、可追踪、可反馈的院外照护任务；诊断与治疗决策由医生确认。</text>
   <rect x="1050" y="428" width="250" height="52" rx="26" fill="rgba(255,255,255,0.1)" stroke="#d7b36b"/>
   <text x="1175" y="460" text-anchor="middle" font-size="14" fill="#f0d7a8">AI 辅助 · 医生在回路</text>
 

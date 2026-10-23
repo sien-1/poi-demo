@@ -40,6 +40,16 @@
     }
     .diagram-head h2 { margin: 0; font-size: 18px; }
     .diagram-head a { color: #2d6f6b; font-size: 12px; }
+    .diagram-head > div { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .zoom-btn {
+      padding: 5px 10px;
+      border: 1px solid #bcd8cf;
+      border-radius: 999px;
+      background: #edf6f3;
+      color: #1f5b58;
+      font-size: 12px;
+      font-weight: 700;
+    }
     .diagram-card img {
       display: block;
       width: 100%;
@@ -93,6 +103,19 @@
       font-size: 12px;
       line-height: 1.7;
     }
+    @media (max-width: 640px) {
+      .diagram-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .diagram-head > div {
+        flex-wrap: wrap;
+      }
+      .zoom-hint {
+        display: block;
+        margin: 4px 0 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -104,7 +127,10 @@
     <section class="diagram-card">
       <div class="diagram-head">
         <h2>概念图：核心痛点 → 产品定位 → 全周期 → 功能模块<span class="zoom-hint">点击图片可放大</span></h2>
-        <a href="assets/poi-concept-map.svg" target="_blank" rel="noopener">打开 SVG 原图 →</a>
+        <div>
+          <button class="zoom-btn" data-src="assets/poi-concept-map.svg">放大查看</button>
+          <a href="assets/poi-concept-map.svg" target="_blank" rel="noopener">打开 SVG 原图 →</a>
+        </div>
       </div>
       <img src="assets/poi-concept-map.svg" alt="POI 数字疗法概念图" />
     </section>
@@ -112,7 +138,10 @@
     <section class="diagram-card">
       <div class="diagram-head">
         <h2>技术架构：数据 → 模型与规则 → 干预 → 结局追踪<span class="zoom-hint">点击图片可放大</span></h2>
-        <a href="assets/poi-tech-architecture.svg" target="_blank" rel="noopener">打开 SVG 原图 →</a>
+        <div>
+          <button class="zoom-btn" data-src="assets/poi-tech-architecture.svg">放大查看</button>
+          <a href="assets/poi-tech-architecture.svg" target="_blank" rel="noopener">打开 SVG 原图 →</a>
+        </div>
       </div>
       <img src="assets/poi-tech-architecture.svg" alt="POI 数字疗法技术架构图" />
     </section>
@@ -135,6 +164,14 @@
       image.addEventListener("click", () => {
         lightboxImg.src = image.src;
         lightboxImg.alt = image.alt;
+        lightbox.classList.remove("hidden");
+      });
+    });
+
+    document.querySelectorAll(".zoom-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        lightboxImg.src = button.dataset.src;
+        lightboxImg.alt = "设计图放大预览";
         lightbox.classList.remove("hidden");
       });
     });
