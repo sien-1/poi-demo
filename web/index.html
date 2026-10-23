@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POI 数字疗法框架 · 功能原型</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">POI</div>
+        <div>
+          <strong>数字疗法框架</strong>
+          <span>全生命周期慢病管理</span>
+        </div>
+      </div>
+
+      <nav class="nav" id="nav">
+        <button class="nav-item active" data-view="overview">
+          <span class="nav-icon">◎</span>总览
+        </button>
+        <button class="nav-item" data-view="risk">
+          <span class="nav-icon">◇</span>风险评估
+        </button>
+        <button class="nav-item" data-view="followup">
+          <span class="nav-icon">↻</span>随访复诊
+        </button>
+        <button class="nav-item" data-view="education">
+          <span class="nav-icon">▤</span>健康教育
+        </button>
+        <button class="nav-item" data-view="monitoring">
+          <span class="nav-icon">⌁</span>健康监测
+        </button>
+        <button class="nav-item" data-view="medication">
+          <span class="nav-icon">✚</span>用药与补剂
+        </button>
+        <div class="nav-divider"></div>
+        <button class="nav-item nav-doctor" data-view="doctor">
+          <span class="nav-icon">医</span>医生工作台
+        </button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <span class="status-dot"></span>
+        功能原型 v0.1
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">POI · 早发性卵巢功能不全</p>
+          <h1 id="page-title">总览</h1>
+        </div>
+        <div class="role-switch" aria-label="视角切换">
+          <button class="role-btn active" data-role="patient">患者端</button>
+          <button class="role-btn" data-role="doctor">医生端</button>
+        </div>
+      </header>
+
+      <div class="prototype-banner">
+        <strong>功能原型</strong>
+        仅展示界面结构与模块关系；所有患者数据均为模拟，不包含真实个人信息，不构成医疗建议。
+      </div>
+
+      <!-- 总览 -->
+      <section class="view active" id="view-overview">
+        <div class="hero-card">
+          <div>
+            <span class="tag amber">模拟患者档案</span>
+            <h2>王女士，32 岁</h2>
+            <p>POI 高风险 · 上次复诊 2026-09-20 · 下次复诊 2026-10-25</p>
+            <div class="hero-actions">
+              <button class="btn primary demo-action" data-message="打开随访详情：后续版本实现">查看随访计划</button>
+              <button class="btn demo-action" data-message="查看全周期档案：后续版本实现">全周期档案</button>
+            </div>
+          </div>
+          <div class="risk-orb">
+            <span>当前风险</span>
+            <strong>高</strong>
+            <small>模拟结果</small>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">CARE JOURNEY</p>
+            <h2>全生命周期管理</h2>
+          </div>
+          <span class="text-muted">从筛查到长期结局追踪</span>
+        </div>
+        <div class="journey">
+          <div class="journey-step done"><span>01</span>筛查与入组</div>
+          <div class="journey-line"></div>
+          <div class="journey-step done"><span>02</span>风险评估</div>
+          <div class="journey-line"></div>
+          <div class="journey-step active"><span>03</span>分层干预</div>
+          <div class="journey-line"></div>
+          <div class="journey-step"><span>04</span>随访复诊</div>
+          <div class="journey-line"></div>
+          <div class="journey-step"><span>05</span>结局追踪</div>
+        </div>
+
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">TODAY</p>
+            <h2>今日重点</h2>
+          </div>
+        </div>
+        <div class="grid three">
+          <article class="card mini-card">
+            <span class="tag blue">复诊</span>
+            <h3>确认下次复诊</h3>
+            <p>距离建议复诊还有 3 天，请确认预约。</p>
+            <button class="text-action demo-action" data-message="复诊确认：后续版本实现">去确认 →</button>
+          </article>
+          <article class="card mini-card">
+            <span class="tag mint">监测</span>
+            <h3>完成睡眠量表</h3>
+            <p>本周睡眠量表尚未填写，预计 2 分钟。</p>
+            <button class="text-action demo-action" data-message="量表填写：后续版本实现">去填写 →</button>
+          </article>
+          <article class="card mini-card">
+            <span class="tag gold">用药</span>
+            <h3>记录今日用药</h3>
+            <p>用药依从性会被记录，供医生复诊参考。</p>
+            <button class="text-action demo-action" data-message="用药记录：后续版本实现">去记录 →</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- 风险评估 -->
+      <section class="view" id="view-risk">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">RISK ASSESSMENT</p>
+            <h2>风险预测与分层</h2>
+          </div>
+          <span class="tag blue">结构化问卷</span>
+        </div>
+        <div class="risk-layout">
+          <div class="card">
+            <h3>基础信息与关键指标</h3>
+            <p class="muted">以下为模拟字段，后续将设置有效值域与缺失值处理。</p>
+            <div class="form-grid">
+              <label>年龄<input value="32" readonly /></label>
+              <label>AMH（ng/mL）<input value="0.42" readonly /></label>
+              <label>FSH（IU/L）<input value="32.5" readonly /></label>
+              <label>AFC（个）<input value="3" readonly /></label>
+              <label>月经状态<select disabled><option>稀发 / 停经 4 个月以上</option></select></label>
+              <label>家族史 / 免疫史<select disabled><option>有家族史</option></select></label>
+            </div>
+            <button class="btn primary demo-action" data-message="风险预测计算：后续版本接入模型">生成风险分层（演示）</button>
+          </div>
+          <div class="card result-card">
+            <span class="tag amber">模拟计算结果</span>
+            <h3>高风险</h3>
+            <p>未来 3 年进展为 POI 的预测概率</p>
+            <div class="big-number">18.6%</div>
+            <div class="rule-box">
+              <strong>临床红线检查</strong>
+              <p>未触发单次直接预警规则；建议进入人工复核流程（演示）。</p>
+            </div>
+            <button class="btn demo-action" data-message="查看可解释因素：后续版本实现">查看可解释因素</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 随访复诊 -->
+      <section class="view" id="view-followup">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">FOLLOW-UP</p>
+            <h2>随访复诊计划</h2>
+          </div>
+          <span class="tag mint">状态：进行中</span>
+        </div>
+        <div class="grid two">
+          <article class="card appointment-card">
+            <span class="tag amber">下次复诊</span>
+            <h3>2026-10-25　妇科内分泌门诊</h3>
+            <p>建议携带：近期 FSH / AMH 检查结果、用药记录、睡眠量表。</p>
+            <div class="progress-line"><span style="width: 72%"></span></div>
+            <p class="muted">距离复诊 3 天 · 已完成 2 / 3 项准备</p>
+            <button class="btn primary demo-action" data-message="复诊确认：后续版本实现">确认复诊</button>
+          </article>
+          <article class="card">
+            <span class="tag blue">随访任务</span>
+            <ul class="task-list">
+              <li><span class="check done">✓</span>更新近期检查结果 <em>已完成</em></li>
+              <li><span class="check">○</span>填写睡眠量表 <em class="warn">今天</em></li>
+              <li><span class="check">○</span>记录近一周用药情况 <em class="warn">明天</em></li>
+            </ul>
+            <button class="text-action demo-action" data-message="查看完整随访任务：后续版本实现">查看全部任务 →</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- 健康教育 -->
+      <section class="view" id="view-education">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">EDUCATION</p>
+            <h2>健康教育</h2>
+          </div>
+          <span class="text-muted">按年龄、文化程度与生育需求分层</span>
+        </div>
+        <div class="card progress-summary">
+          <div>
+            <span class="tag mint">本月学习</span>
+            <h3>已完成 3 / 8 个主题</h3>
+            <p class="muted">后续将结合打卡与作业提高依从性。</p>
+          </div>
+          <div class="progress-ring" style="--value: 37%">37%</div>
+        </div>
+        <div class="grid three">
+          <article class="card lesson-card">
+            <span class="tag blue">基础认知</span>
+            <h3>理解 POI 与长期健康风险</h3>
+            <div class="progress-line"><span style="width: 100%"></span></div>
+            <p class="muted">已完成 · 8 分钟</p>
+          </article>
+          <article class="card lesson-card">
+            <span class="tag gold">治疗管理</span>
+            <h3>长期规范治疗与复诊</h3>
+            <div class="progress-line"><span style="width: 45%"></span></div>
+            <p class="muted">学习进度 45% · 建议本周完成</p>
+          </article>
+          <article class="card lesson-card">
+            <span class="tag mint">心理与生活</span>
+            <h3>情绪、睡眠与生育决策支持</h3>
+            <div class="progress-line"><span style="width: 0%"></span></div>
+            <p class="muted">未开始 · 6 分钟</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 健康监测 -->
+      <section class="view" id="view-monitoring">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">MONITORING</p>
+            <h2>居家健康监测</h2>
+          </div>
+          <span class="tag blue">本周模拟数据</span>
+        </div>
+        <div class="grid four">
+          <article class="card monitor-card">
+            <span class="monitor-icon">眠</span>
+            <h3>睡眠</h3>
+            <strong class="score warn">62</strong>
+            <p>低于目标区间</p>
+          </article>
+          <article class="card monitor-card">
+            <span class="monitor-icon">压</span>
+            <h3>压力</h3>
+            <strong class="score">中</strong>
+            <p>建议进行放松练习</p>
+          </article>
+          <article class="card monitor-card">
+            <span class="monitor-icon">情</span>
+            <h3>情绪</h3>
+            <strong class="score">平稳</strong>
+            <p>本周情绪波动较小</p>
+          </article>
+          <article class="card monitor-card">
+            <span class="monitor-icon">心</span>
+            <h3>心理量表</h3>
+            <strong class="score warn">待关注</strong>
+            <p>建议人工复核</p>
+          </article>
+        </div>
+        <div class="alert-card">
+          <div>
+            <span class="tag amber">异常提示示例</span>
+            <h3>睡眠与心理量表出现异常趋势</h3>
+            <p>系统可触发分级干预：患者端提示 + 医生端待办工单（功能后续实现）。</p>
+          </div>
+          <button class="btn demo-action" data-message="异常升级流程：后续版本实现">查看处理路径</button>
+        </div>
+      </section>
+
+      <!-- 用药与补剂 -->
+      <section class="view" id="view-medication">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">MEDICATION & SUPPLEMENTS</p>
+            <h2>用药与补剂管理</h2>
+          </div>
+          <span class="tag gold">需医生审核</span>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <span class="tag blue">处方用药</span>
+            <h3>激素治疗方案</h3>
+            <p class="muted">方案由医生制定与调整，患者端仅执行与记录。</p>
+            <ul class="task-list">
+              <li><span class="check done">✓</span>今日已记录用药 <em>已打卡</em></li>
+              <li><span class="check">○</span>下次复诊评估方案 <em>10-25</em></li>
+            </ul>
+            <button class="btn demo-action" data-message="用药记录：后续版本实现">记录用药</button>
+          </article>
+          <article class="card">
+            <span class="tag mint">补剂管理</span>
+            <h3>钙与维生素 D</h3>
+            <p class="muted">补剂作为辅助干预，不替代处方治疗；使用前需医生确认。</p>
+            <div class="supplement-row"><span>今日计划</span><strong>已记录 1 / 1</strong></div>
+            <div class="supplement-row"><span>最近提醒</span><strong>20:00</strong></div>
+            <button class="btn demo-action" data-message="补剂记录：后续版本实现">记录补剂</button>
+          </article>
+        </div>
+        <div class="notice-card">
+          本模块仅展示“医生审核 → 患者执行 → 依从性反馈”的结构，不提供任何用药或补剂推荐。补剂不是药物，不能替代医生处方。
+        </div>
+      </section>
+
+      <!-- 医生工作台 -->
+      <section class="view" id="view-doctor">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">CLINICIAN WORKBENCH</p>
+            <h2>医生工作台</h2>
+          </div>
+          <span class="tag amber">人在回路</span>
+        </div>
+        <div class="grid three">
+          <article class="metric-card"><span>临床红线</span><strong>2</strong><small>待处理预警</small></article>
+          <article class="metric-card"><span>方案待审核</span><strong>3</strong><small>等待医生确认</small></article>
+          <article class="metric-card"><span>失访风险</span><strong>1</strong><small>建议人工随访</small></article>
+        </div>
+        <div class="card">
+          <div class="section-head compact">
+            <h3>待办队列</h3>
+            <span class="text-muted">模拟患者数据</span>
+          </div>
+          <div class="queue-row">
+            <span class="tag red">红线</span>
+            <div><strong>患者 A · 38 岁</strong><p>FSH 与闭经时长触发规则，建议立即临床评估</p></div>
+            <button class="btn demo-action" data-message="打开医生处理页：后续版本实现">处理</button>
+          </div>
+          <div class="queue-row">
+            <span class="tag amber">待审核</span>
+            <div><strong>患者 B · 29 岁</strong><p>系统建议调整随访频次，等待医生确认</p></div>
+            <button class="btn demo-action" data-message="审核方案：后续版本实现">审核</button>
+          </div>
+          <div class="queue-row">
+            <span class="tag blue">失访</span>
+            <div><strong>患者 C · 34 岁</strong><p>连续两次未完成复诊任务，建议电话随访</p></div>
+            <button class="btn demo-action" data-message="人工随访记录：后续版本实现">记录随访</button>
+          </div>
+        </div>
+      </section>
+
+      <p class="footer-note">POI 数字疗法框架 · 功能原型 · 模块与字段仍会随研究方案调整</p>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>
