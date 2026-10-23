@@ -11,6 +11,7 @@
       .title { font-size: 34px; font-weight: 700; letter-spacing: 1px; }
       .subtitle { font-size: 16px; fill: #70817f; }
       .section { font-size: 13px; font-weight: 700; letter-spacing: 2px; fill: #2d6f6b; }
+      .on-dark { fill: #f0d7a8; }
       .card-title { font-size: 20px; font-weight: 700; }
       .body { font-size: 15px; fill: #526865; }
       .small { font-size: 12px; fill: #7c8f8b; }
@@ -57,7 +58,7 @@
 
   <!-- 产品定位 -->
   <rect x="60" y="402" width="1280" height="120" rx="20" fill="#102a35"/>
-  <text x="90" y="437" class="section" fill="#d7b36b">02  产品定位</text>
+  <text x="90" y="437" class="section on-dark">02  产品定位</text>
   <text x="90" y="476" class="card-title" fill="#ffffff">面向 POI 人群的全生命周期数字疗法框架</text>
   <text x="90" y="503" class="body" fill="#b8ceca">把指南与政策要求转化为可执行、可追踪、可反馈的院外照护任务；诊断与治疗决策由医生确认。</text>
   <rect x="1050" y="428" width="250" height="52" rx="26" fill="rgba(255,255,255,0.1)" stroke="#d7b36b"/>
@@ -100,8 +101,8 @@
 
   <g>
     <rect x="60" y="740" width="390" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
-    <circle cx="92" cy="772" r="15" fill="#e8f3ef"/>
-    <text x="92" y="777" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5b58">01</text>
+    <circle cx="92" cy="772" r="15" fill="#1f5b58"/>
+    <text x="92" y="777" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">01</text>
     <text x="120" y="777" class="module-title">风险预测</text>
     <text x="120" y="803" class="module-body">问卷 + 激素 + 辅助检查 → 可解释风险分层</text>
     <text x="120" y="827" class="small">风险概率 · 可控因素 · 建议动作</text>
@@ -109,8 +110,8 @@
 
   <g>
     <rect x="480" y="740" width="390" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
-    <circle cx="512" cy="772" r="15" fill="#e8f3ef"/>
-    <text x="512" y="777" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5b58">02</text>
+    <circle cx="512" cy="772" r="15" fill="#1f5b58"/>
+    <text x="512" y="777" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">02</text>
     <text x="540" y="777" class="module-title">复诊随访</text>
     <text x="540" y="803" class="module-body">复诊提醒、就医准备、任务追踪与逾期升级</text>
     <text x="540" y="827" class="small">降低遗漏与失访</text>
@@ -118,8 +119,8 @@
 
   <g>
     <rect x="900" y="740" width="440" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
-    <circle cx="932" cy="772" r="15" fill="#e8f3ef"/>
-    <text x="932" y="777" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5b58">03</text>
+    <circle cx="932" cy="772" r="15" fill="#1f5b58"/>
+    <text x="932" y="777" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">03</text>
     <text x="960" y="777" class="module-title">健康教育</text>
     <text x="960" y="803" class="module-body">按阶段、文化程度与生育需求分层推送</text>
     <text x="960" y="827" class="small">课程 · 作业 · 打卡 · 反馈</text>
@@ -127,8 +128,8 @@
 
   <g>
     <rect x="60" y="880" width="390" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
-    <circle cx="92" cy="912" r="15" fill="#e8f3ef"/>
-    <text x="92" y="917" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5b58">04</text>
+    <circle cx="92" cy="912" r="15" fill="#1f5b58"/>
+    <text x="92" y="917" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">04</text>
     <text x="120" y="917" class="module-title">健康监测</text>
     <text x="120" y="943" class="module-body">睡眠、压力、情绪、心理量表与异常提示</text>
     <text x="120" y="967" class="small">异常 → 医生复核 / 人工随访</text>
@@ -136,8 +137,8 @@
 
   <g>
     <rect x="480" y="880" width="390" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
-    <circle cx="512" cy="912" r="15" fill="#e8f3ef"/>
-    <text x="512" y="917" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5b58">05</text>
+    <circle cx="512" cy="912" r="15" fill="#1f5b58"/>
+    <text x="512" y="917" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">05</text>
     <text x="540" y="917" class="module-title">用药与补剂管理</text>
     <text x="540" y="943" class="module-body">处方用药与补剂记录、依从性与医生审核</text>
     <text x="540" y="967" class="small">补剂为辅助干预，不替代处方</text>
@@ -145,8 +146,8 @@
 
   <g>
     <rect x="900" y="880" width="440" height="120" rx="16" fill="#fff8ea" stroke="#e4d0a9"/>
-    <circle cx="932" cy="912" r="15" fill="#f7ecd8"/>
-    <text x="932" y="917" text-anchor="middle" font-size="12" font-weight="700" fill="#8a6526">06</text>
+    <circle cx="932" cy="912" r="15" fill="#8a6526"/>
+    <text x="932" y="917" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">06</text>
     <text x="960" y="917" class="module-title">医生审核与人工随访</text>
     <text x="960" y="943" class="module-body">红线预警、方案审核、失访与电话随访</text>
     <text x="960" y="967" class="small">患者在 App，医生在 Web，人在回路</text>
