@@ -62,7 +62,7 @@
   <rect x="60" y="402" width="1280" height="120" rx="20" fill="#102a35"/>
   <text x="90" y="437" class="section on-dark">02  产品定位</text>
   <text x="90" y="476" class="card-title" fill="#ffffff">面向 POI 人群的全生命周期数字疗法框架</text>
-  <text x="90" y="503" class="body on-dark-body">把指南与政策要求转化为可执行、可追踪、可反馈的院外照护任务；诊断与治疗决策由医生确认。</text>
+  <text x="90" y="503" class="body" style="fill:#f4dfa9">把指南与政策要求转化为可执行、可追踪、可反馈的院外照护任务；诊断与治疗决策由医生确认。</text>
   <rect x="1050" y="428" width="250" height="52" rx="26" fill="rgba(255,255,255,0.1)" stroke="#d7b36b"/>
   <text x="1175" y="460" text-anchor="middle" font-size="14" fill="#f0d7a8">AI 辅助 · 医生在回路</text>
 
@@ -138,12 +138,12 @@
   </g>
 
   <g>
-    <rect x="480" y="880" width="390" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
+    <rect x="480" y="880" width="390" height="120" rx="16" fill="#102a35" stroke="#2d6f6b"/>
     <circle cx="512" cy="912" r="15" fill="#1f5b58"/>
     <text x="512" y="917" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">05</text>
-    <text x="540" y="917" class="module-title">用药与补剂管理</text>
-    <text x="540" y="943" class="module-body">处方用药与补剂记录、依从性与医生审核</text>
-    <text x="540" y="967" class="small">补剂为辅助干预，不替代处方</text>
+    <text x="540" y="917" class="module-title" style="fill:#f7e4b3">用药与补剂管理</text>
+    <text x="540" y="943" class="module-body" style="fill:#ecd9a8">处方用药与补剂记录、依从性与医生审核</text>
+    <text x="540" y="967" class="small" style="fill:#c9b989">补剂为辅助干预，不替代处方</text>
   </g>
 
   <g>
