@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1160" width="1400" height="1160">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5d8884"/>
+    </marker>
+    <marker id="arrow-gold" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c99a43"/>
+    </marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif; fill: #17313c; }
+      .title { font-size: 34px; font-weight: 700; letter-spacing: 1px; }
+      .subtitle { font-size: 16px; fill: #70817f; }
+      .section { font-size: 13px; font-weight: 700; letter-spacing: 2px; fill: #2d6f6b; }
+      .card-title { font-size: 20px; font-weight: 700; }
+      .body { font-size: 15px; fill: #526865; }
+      .small { font-size: 12px; fill: #7c8f8b; }
+      .step { font-size: 16px; font-weight: 700; }
+      .module-title { font-size: 17px; font-weight: 700; }
+      .module-body { font-size: 13px; fill: #657b77; }
+      .footer { font-size: 12px; fill: #8fa29e; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="1160" rx="24" fill="#f4f8f7"/>
+  <circle cx="1240" cy="70" r="150" fill="#e8f3ef" opacity="0.7"/>
+  <circle cx="1300" cy="110" r="80" fill="#f7ecd8" opacity="0.65"/>
+
+  <text x="60" y="72" class="title">数字医疗赋能 POI 全生命周期管理</text>
+  <text x="60" y="105" class="subtitle">核心痛点 → 产品定位 → 全周期路径 → 患者端功能 → 动态闭环</text>
+
+  <!-- 核心痛点 -->
+  <text x="60" y="155" class="section">01  核心痛点</text>
+
+  <rect x="60" y="178" width="390" height="190" rx="18" fill="#ffffff" stroke="#dbe5e4"/>
+  <rect x="60" y="178" width="6" height="190" rx="3" fill="#b95757"/>
+  <text x="88" y="214" class="card-title">疾病负担</text>
+  <text x="88" y="248" class="body">40 岁前丧失雌激素，提前 10~15 年暴露风险</text>
+  <text x="88" y="276" class="body">骨健康 / 心血管 / 神经认知 / 心理风险叠加</text>
+  <text x="88" y="304" class="body">生育力显著下降且多不可逆</text>
+  <text x="88" y="342" class="small">从“阶段性诊疗”转向长期慢病管理</text>
+
+  <rect x="480" y="178" width="390" height="190" rx="18" fill="#ffffff" stroke="#dbe5e4"/>
+  <rect x="480" y="178" width="6" height="190" rx="3" fill="#c99a43"/>
+  <text x="508" y="214" class="card-title">管理断层</text>
+  <text x="508" y="248" class="body">缺乏围绕长期风险的连续随访机制</text>
+  <text x="508" y="276" class="body">方案容易固化：“一次处方、长期不变”</text>
+  <text x="508" y="304" class="body">患者自我管理与依从性不足，沟通滞后</text>
+  <text x="508" y="342" class="small">院外任务不可追踪，异常难以升级</text>
+
+  <rect x="900" y="178" width="440" height="190" rx="18" fill="#ffffff" stroke="#dbe5e4"/>
+  <rect x="900" y="178" width="6" height="190" rx="3" fill="#3c6f8f"/>
+  <text x="928" y="214" class="card-title">技术与证据缺口</text>
+  <text x="928" y="248" class="body">国内缺少 POI 多指标联合风险预测工具</text>
+  <text x="928" y="276" class="body">监测、反馈、调优尚未形成闭环</text>
+  <text x="928" y="304" class="body">预测模型需要可解释，干预需要医生审核</text>
+  <text x="928" y="342" class="small">避免“AI 诊断”，定位为辅助识别与分层</text>
+
+  <!-- 产品定位 -->
+  <rect x="60" y="402" width="1280" height="120" rx="20" fill="#102a35"/>
+  <text x="90" y="437" class="section" fill="#d7b36b">02  产品定位</text>
+  <text x="90" y="476" class="card-title" fill="#ffffff">面向 POI 人群的全生命周期数字疗法框架</text>
+  <text x="90" y="503" class="body" fill="#b8ceca">把指南与政策要求转化为可执行、可追踪、可反馈的院外照护任务；诊断与治疗决策由医生确认。</text>
+  <rect x="1050" y="428" width="250" height="52" rx="26" fill="rgba(255,255,255,0.1)" stroke="#d7b36b"/>
+  <text x="1175" y="460" text-anchor="middle" font-size="14" fill="#f0d7a8">AI 辅助 · 医生在回路</text>
+
+  <!-- 全生命周期 -->
+  <text x="60" y="570" class="section">03  POI 全生命周期路径</text>
+
+  <rect x="60" y="592" width="190" height="70" rx="12" fill="#e8f3ef" stroke="#bcd8cf"/>
+  <text x="155" y="623" text-anchor="middle" class="step">筛查与入组</text>
+  <text x="155" y="645" text-anchor="middle" class="small">问卷 · 病史 · 检查</text>
+
+  <line x1="250" y1="627" x2="298" y2="627" stroke="#5d8884" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="300" y="592" width="190" height="70" rx="12" fill="#e8f3ef" stroke="#bcd8cf"/>
+  <text x="395" y="623" text-anchor="middle" class="step">风险评估</text>
+  <text x="395" y="645" text-anchor="middle" class="small">概率 · 可控因素 · 分层</text>
+
+  <line x1="490" y1="627" x2="538" y2="627" stroke="#5d8884" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="540" y="592" width="190" height="70" rx="12" fill="#fff8ea" stroke="#e4d0a9"/>
+  <text x="635" y="623" text-anchor="middle" class="step">分层干预</text>
+  <text x="635" y="645" text-anchor="middle" class="small">教育 · 监测 · 用药/补剂</text>
+
+  <line x1="730" y1="627" x2="778" y2="627" stroke="#5d8884" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="780" y="592" width="190" height="70" rx="12" fill="#e8f3ef" stroke="#bcd8cf"/>
+  <text x="875" y="623" text-anchor="middle" class="step">随访复诊</text>
+  <text x="875" y="645" text-anchor="middle" class="small">提醒 · 就医准备 · 依从</text>
+
+  <line x1="970" y1="627" x2="1018" y2="627" stroke="#5d8884" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1020" y="592" width="320" height="70" rx="12" fill="#e8f3ef" stroke="#bcd8cf"/>
+  <text x="1180" y="623" text-anchor="middle" class="step">结局追踪与方案迭代</text>
+  <text x="1180" y="645" text-anchor="middle" class="small">症状 · 依从性 · 复诊完成率 · 临床结局</text>
+
+  <!-- 功能模块 -->
+  <text x="60" y="716" class="section">04  患者端功能模块</text>
+  <text x="1340" y="716" text-anchor="end" class="small">医生端负责审核、预警与人工随访</text>
+
+  <g>
+    <rect x="60" y="740" width="390" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
+    <circle cx="92" cy="772" r="15" fill="#e8f3ef"/>
+    <text x="92" y="777" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5b58">01</text>
+    <text x="120" y="777" class="module-title">风险预测</text>
+    <text x="120" y="803" class="module-body">问卷 + 激素 + 辅助检查 → 可解释风险分层</text>
+    <text x="120" y="827" class="small">风险概率 · 可控因素 · 建议动作</text>
+  </g>
+
+  <g>
+    <rect x="480" y="740" width="390" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
+    <circle cx="512" cy="772" r="15" fill="#e8f3ef"/>
+    <text x="512" y="777" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5b58">02</text>
+    <text x="540" y="777" class="module-title">复诊随访</text>
+    <text x="540" y="803" class="module-body">复诊提醒、就医准备、任务追踪与逾期升级</text>
+    <text x="540" y="827" class="small">降低遗漏与失访</text>
+  </g>
+
+  <g>
+    <rect x="900" y="740" width="440" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
+    <circle cx="932" cy="772" r="15" fill="#e8f3ef"/>
+    <text x="932" y="777" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5b58">03</text>
+    <text x="960" y="777" class="module-title">健康教育</text>
+    <text x="960" y="803" class="module-body">按阶段、文化程度与生育需求分层推送</text>
+    <text x="960" y="827" class="small">课程 · 作业 · 打卡 · 反馈</text>
+  </g>
+
+  <g>
+    <rect x="60" y="880" width="390" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
+    <circle cx="92" cy="912" r="15" fill="#e8f3ef"/>
+    <text x="92" y="917" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5b58">04</text>
+    <text x="120" y="917" class="module-title">健康监测</text>
+    <text x="120" y="943" class="module-body">睡眠、压力、情绪、心理量表与异常提示</text>
+    <text x="120" y="967" class="small">异常 → 医生复核 / 人工随访</text>
+  </g>
+
+  <g>
+    <rect x="480" y="880" width="390" height="120" rx="16" fill="#ffffff" stroke="#dbe5e4"/>
+    <circle cx="512" cy="912" r="15" fill="#e8f3ef"/>
+    <text x="512" y="917" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5b58">05</text>
+    <text x="540" y="917" class="module-title">用药与补剂管理</text>
+    <text x="540" y="943" class="module-body">处方用药与补剂记录、依从性与医生审核</text>
+    <text x="540" y="967" class="small">补剂为辅助干预，不替代处方</text>
+  </g>
+
+  <g>
+    <rect x="900" y="880" width="440" height="120" rx="16" fill="#fff8ea" stroke="#e4d0a9"/>
+    <circle cx="932" cy="912" r="15" fill="#f7ecd8"/>
+    <text x="932" y="917" text-anchor="middle" font-size="12" font-weight="700" fill="#8a6526">06</text>
+    <text x="960" y="917" class="module-title">医生审核与人工随访</text>
+    <text x="960" y="943" class="module-body">红线预警、方案审核、失访与电话随访</text>
+    <text x="960" y="967" class="small">患者在 App，医生在 Web，人在回路</text>
+  </g>
+
+  <!-- 闭环机制 -->
+  <rect x="60" y="1032" width="1280" height="76" rx="16" fill="#102a35"/>
+  <text x="92" y="1064" font-size="13" font-weight="700" fill="#d7b36b">贯穿机制</text>
+  <text x="92" y="1092" font-size="14" fill="#dbe9e6">持续监测</text>
+  <line x1="190" y1="1087" x2="250" y2="1087" stroke="#c99a43" stroke-width="2" marker-end="url(#arrow-gold)"/>
+  <text x="265" y="1092" font-size="14" fill="#dbe9e6">及时预警</text>
+  <line x1="360" y1="1087" x2="420" y2="1087" stroke="#c99a43" stroke-width="2" marker-end="url(#arrow-gold)"/>
+  <text x="435" y="1092" font-size="14" fill="#dbe9e6">医生审核</text>
+  <line x1="535" y1="1087" x2="595" y2="1087" stroke="#c99a43" stroke-width="2" marker-end="url(#arrow-gold)"/>
+  <text x="610" y="1092" font-size="14" fill="#dbe9e6">动态调优</text>
+  <text x="760" y="1092" font-size="13" fill="#a9c4bd">让居家管理从“固定方案推送”升级为“随症而变的精准陪伴”</text>
+
+  <text x="700" y="1140" text-anchor="middle" class="footer">功能原型 · 患者数据为模拟 · 不构成诊断或治疗建议</text>
+</svg>

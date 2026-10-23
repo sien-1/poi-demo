@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POI 数字疗法 · 设计图</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px 18px 60px;
+      background: #f3f6f6;
+      color: #17313c;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    .back {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: #2d6f6b;
+      font-size: 13px;
+      text-decoration: none;
+    }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    .subtitle { margin: 0 0 26px; color: #70817f; font-size: 14px; }
+    .diagram-card {
+      margin-bottom: 26px;
+      padding: 18px;
+      border: 1px solid #dbe5e4;
+      border-radius: 18px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(16, 42, 53, 0.07);
+    }
+    .diagram-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .diagram-head h2 { margin: 0; font-size: 18px; }
+    .diagram-head a { color: #2d6f6b; font-size: 12px; }
+    .diagram-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      background: #f4f8f7;
+    }
+    .note {
+      margin: 18px 0 0;
+      color: #8fa29e;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="index.html">← 返回演示入口</a>
+    <h1>POI 数字疗法 · 两张设计图</h1>
+    <p class="subtitle">概念图与分层技术架构图 · 可直接打开 SVG 或用于汇报排版</p>
+
+    <section class="diagram-card">
+      <div class="diagram-head">
+        <h2>概念图：核心痛点 → 产品定位 → 全周期 → 功能模块</h2>
+        <a href="assets/poi-concept-map.svg" target="_blank" rel="noopener">打开 SVG 原图 →</a>
+      </div>
+      <img src="assets/poi-concept-map.svg" alt="POI 数字疗法概念图" />
+    </section>
+
+    <section class="diagram-card">
+      <div class="diagram-head">
+        <h2>技术架构：数据 → 模型与规则 → 干预 → 结局追踪</h2>
+        <a href="assets/poi-tech-architecture.svg" target="_blank" rel="noopener">打开 SVG 原图 →</a>
+      </div>
+      <img src="assets/poi-tech-architecture.svg" alt="POI 数字疗法技术架构图" />
+    </section>
+
+    <p class="note">
+      两张图均为功能原型设计，数据与流程为演示用途；预测结果仅作风险提示，不替代医生诊断与治疗。
+    </p>
+  </div>
+</body>
+</html>
