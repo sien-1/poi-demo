@@ -73,6 +73,7 @@
       justify-content: center;
       padding: 14px;
       background: rgba(8, 26, 33, 0.9);
+      overflow: hidden;
     }
     .lightbox.hidden {
       display: none;
@@ -83,6 +84,14 @@
       border-radius: 10px;
       background: #ffffff;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      touch-action: none;
+      cursor: grab;
+      transform-origin: center center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .lightbox img.dragging {
+      cursor: grabbing;
     }
     .lightbox-close {
       position: absolute;
@@ -96,6 +105,45 @@
       color: #ffffff;
       font-size: 22px;
       line-height: 1;
+      cursor: pointer;
+    }
+    .lightbox-toolbar {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      background: rgba(16, 42, 53, 0.9);
+      color: #ffffff;
+    }
+    .lightbox-toolbar button {
+      min-width: 32px;
+      height: 30px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-size: 15px;
+    }
+    #zoom-level {
+      min-width: 48px;
+      text-align: center;
+      font-size: 11px;
+      color: #d8e6e2;
+    }
+    .zoom-tip {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 11px;
+      white-space: nowrap;
     }
     .note {
       margin: 18px 0 0;
@@ -128,22 +176,22 @@
       <div class="diagram-head">
         <h2>概念图：核心痛点 → 产品定位 → 全周期 → 功能模块<span class="zoom-hint">点击图片可放大</span></h2>
         <div>
-          <button class="zoom-btn" data-src="assets/poi-concept-map.svg?v=3">放大查看</button>
-          <a href="assets/poi-concept-map.svg?v=3" target="_blank" rel="noopener">打开 SVG 原图 →</a>
+          <button class="zoom-btn" data-src="assets/poi-concept-map.svg?v=4">放大查看</button>
+          <a href="assets/poi-concept-map.svg?v=4" target="_blank" rel="noopener">打开 SVG 原图 →</a>
         </div>
       </div>
-      <img src="assets/poi-concept-map.svg?v=3" alt="POI 数字疗法概念图" />
+      <img src="assets/poi-concept-map.svg?v=4" alt="POI 数字疗法概念图" />
     </section>
 
     <section class="diagram-card">
       <div class="diagram-head">
         <h2>技术架构：数据 → 模型与规则 → 干预 → 结局追踪<span class="zoom-hint">点击图片可放大</span></h2>
         <div>
-          <button class="zoom-btn" data-src="assets/poi-tech-architecture.svg?v=3">放大查看</button>
-          <a href="assets/poi-tech-architecture.svg?v=3" target="_blank" rel="noopener">打开 SVG 原图 →</a>
+          <button class="zoom-btn" data-src="assets/poi-tech-architecture.svg?v=4">放大查看</button>
+          <a href="assets/poi-tech-architecture.svg?v=4" target="_blank" rel="noopener">打开 SVG 原图 →</a>
         </div>
       </div>
-      <img src="assets/poi-tech-architecture.svg?v=3" alt="POI 数字疗法技术架构图" />
+      <img src="assets/poi-tech-architecture.svg?v=4" alt="POI 数字疗法技术架构图" />
     </section>
 
     <p class="note">
@@ -153,38 +201,149 @@
 
   <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="图片放大预览">
     <button id="lightbox-close" class="lightbox-close" aria-label="关闭">×</button>
+    <div class="zoom-tip">双指缩放 · 拖动查看 · 双击复位</div>
     <img id="lightbox-img" alt="设计图放大预览" />
+    <div class="lightbox-toolbar" aria-label="缩放工具">
+      <button id="zoom-out" aria-label="缩小">−</button>
+      <span id="zoom-level">100%</span>
+      <button id="zoom-in" aria-label="放大">＋</button>
+      <button id="zoom-reset" aria-label="重置缩放">重置</button>
+    </div>
   </div>
 
   <script>
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
+    const zoomLevel = document.getElementById("zoom-level");
+    const pointers = new Map();
+
+    let scale = 1;
+    let panX = 0;
+    let panY = 0;
+    let startX = 0;
+    let startY = 0;
+    let originX = 0;
+    let originY = 0;
+    let startScale = 1;
+    let pinchStartDistance = 0;
+
+    function applyTransform() {
+      lightboxImg.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+      zoomLevel.textContent = Math.round(scale * 100) + "%";
+    }
+
+    function resetZoom() {
+      scale = 1;
+      panX = 0;
+      panY = 0;
+      applyTransform();
+    }
+
+    function setZoom(nextScale) {
+      scale = Math.min(5, Math.max(1, nextScale));
+      if (scale === 1) {
+        panX = 0;
+        panY = 0;
+      }
+      applyTransform();
+    }
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || "设计图放大预览";
+      resetZoom();
+      lightbox.classList.remove("hidden");
+    }
 
     document.querySelectorAll(".diagram-card img").forEach(image => {
       image.addEventListener("click", () => {
-        lightboxImg.src = image.src;
-        lightboxImg.alt = image.alt;
-        lightbox.classList.remove("hidden");
+        openLightbox(image.src, image.alt);
       });
     });
 
     document.querySelectorAll(".zoom-btn").forEach(button => {
       button.addEventListener("click", () => {
-        lightboxImg.src = button.dataset.src;
-        lightboxImg.alt = "设计图放大预览";
-        lightbox.classList.remove("hidden");
+        openLightbox(button.dataset.src, "设计图放大预览");
       });
     });
 
     function closeLightbox() {
       lightbox.classList.add("hidden");
       lightboxImg.removeAttribute("src");
+      pointers.clear();
+      resetZoom();
     }
 
     document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+    document.getElementById("zoom-in").addEventListener("click", () => setZoom(scale + 0.5));
+    document.getElementById("zoom-out").addEventListener("click", () => setZoom(scale - 0.5));
+    document.getElementById("zoom-reset").addEventListener("click", resetZoom);
+
     lightbox.addEventListener("click", event => {
       if (event.target === lightbox) closeLightbox();
     });
+
+    lightbox.addEventListener("wheel", event => {
+      if (lightbox.classList.contains("hidden")) return;
+      event.preventDefault();
+      setZoom(scale + (event.deltaY < 0 ? 0.2 : -0.2));
+    }, { passive: false });
+
+    lightboxImg.addEventListener("dblclick", () => {
+      if (scale > 1) resetZoom();
+      else setZoom(2);
+    });
+
+    lightboxImg.addEventListener("pointerdown", event => {
+      event.preventDefault();
+      lightboxImg.setPointerCapture(event.pointerId);
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+      if (pointers.size === 1) {
+        startX = event.clientX;
+        startY = event.clientY;
+        originX = panX;
+        originY = panY;
+        lightboxImg.classList.add("dragging");
+      } else if (pointers.size === 2) {
+        const points = Array.from(pointers.values());
+        pinchStartDistance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+        startScale = scale;
+      }
+    });
+
+    lightboxImg.addEventListener("pointermove", event => {
+      if (!pointers.has(event.pointerId)) return;
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+      if (pointers.size === 1 && scale > 1) {
+        panX = originX + event.clientX - startX;
+        panY = originY + event.clientY - startY;
+        applyTransform();
+      } else if (pointers.size === 2 && pinchStartDistance > 0) {
+        const points = Array.from(pointers.values());
+        const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+        setZoom(startScale * (distance / pinchStartDistance));
+      }
+    });
+
+    function endPointer(event) {
+      pointers.delete(event.pointerId);
+      if (pointers.size < 2) pinchStartDistance = 0;
+      if (pointers.size === 0) {
+        lightboxImg.classList.remove("dragging");
+      } else if (pointers.size === 1) {
+        const remaining = Array.from(pointers.values())[0];
+        startX = remaining.x;
+        startY = remaining.y;
+        originX = panX;
+        originY = panY;
+      }
+    }
+
+    lightboxImg.addEventListener("pointerup", endPointer);
+    lightboxImg.addEventListener("pointercancel", endPointer);
+
     document.addEventListener("keydown", event => {
       if (event.key === "Escape" && !lightbox.classList.contains("hidden")) {
         closeLightbox();

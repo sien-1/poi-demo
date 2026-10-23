@@ -61,10 +61,10 @@
   <!-- 产品定位 -->
   <rect x="60" y="402" width="1280" height="120" rx="20" fill="#102a35"/>
   <text x="90" y="437" class="section on-dark">02  产品定位</text>
-  <text x="90" y="476" class="card-title" fill="#ffffff">面向 POI 人群的全生命周期数字疗法框架</text>
+  <text x="90" y="476" class="card-title" style="fill:#f4dfa9">面向 POI 人群的全生命周期数字疗法框架</text>
   <text x="90" y="503" class="body" style="fill:#f4dfa9">把指南与政策要求转化为可执行、可追踪、可反馈的院外照护任务；诊断与治疗决策由医生确认。</text>
   <rect x="1050" y="428" width="250" height="52" rx="26" fill="rgba(255,255,255,0.1)" stroke="#d7b36b"/>
-  <text x="1175" y="460" text-anchor="middle" font-size="14" fill="#f0d7a8">AI 辅助 · 医生在回路</text>
+  <text x="1175" y="460" text-anchor="middle" font-size="14" style="fill:#f4dfa9">AI 辅助 · 医生在回路</text>
 
   <!-- 全生命周期 -->
   <text x="60" y="570" class="section">03  POI 全生命周期路径</text>
@@ -157,15 +157,15 @@
 
   <!-- 闭环机制 -->
   <rect x="60" y="1032" width="1280" height="76" rx="16" fill="#102a35"/>
-  <text x="92" y="1064" font-size="13" font-weight="700" fill="#d7b36b">贯穿机制</text>
-  <text x="92" y="1092" font-size="14" fill="#dbe9e6">持续监测</text>
+  <text x="92" y="1064" font-size="13" font-weight="700" style="fill:#f4dfa9">贯穿机制</text>
+  <text x="92" y="1092" font-size="14" style="fill:#f4dfa9">持续监测</text>
   <line x1="190" y1="1087" x2="250" y2="1087" stroke="#c99a43" stroke-width="2" marker-end="url(#arrow-gold)"/>
-  <text x="265" y="1092" font-size="14" fill="#dbe9e6">及时预警</text>
+  <text x="265" y="1092" font-size="14" style="fill:#f4dfa9">及时预警</text>
   <line x1="360" y1="1087" x2="420" y2="1087" stroke="#c99a43" stroke-width="2" marker-end="url(#arrow-gold)"/>
-  <text x="435" y="1092" font-size="14" fill="#dbe9e6">医生审核</text>
+  <text x="435" y="1092" font-size="14" style="fill:#f4dfa9">医生审核</text>
   <line x1="535" y1="1087" x2="595" y2="1087" stroke="#c99a43" stroke-width="2" marker-end="url(#arrow-gold)"/>
-  <text x="610" y="1092" font-size="14" fill="#dbe9e6">动态调优</text>
-  <text x="760" y="1092" font-size="13" fill="#a9c4bd">让居家管理从“固定方案推送”升级为“随症而变的精准陪伴”</text>
+  <text x="610" y="1092" font-size="14" style="fill:#f4dfa9">动态调优</text>
+  <text x="760" y="1092" font-size="13" style="fill:#cfe0dc">让居家管理从“固定方案推送”升级为“随症而变的精准陪伴”</text>
 
   <text x="700" y="1140" text-anchor="middle" class="footer">功能原型 · 患者数据为模拟 · 不构成诊断或治疗建议</text>
 </svg>
