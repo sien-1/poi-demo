@@ -107,6 +107,19 @@
       line-height: 1;
       cursor: pointer;
     }
+    .lightbox-back {
+      position: absolute;
+      top: 16px;
+      left: 18px;
+      height: 36px;
+      padding: 0 14px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-size: 13px;
+      cursor: pointer;
+    }
     .lightbox-toolbar {
       position: absolute;
       left: 50%;
@@ -163,6 +176,9 @@
         display: block;
         margin: 4px 0 0;
       }
+      .zoom-tip {
+        top: 60px;
+      }
     }
   </style>
 </head>
@@ -200,6 +216,7 @@
   </div>
 
   <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="图片放大预览">
+    <button id="lightbox-back" class="lightbox-back">← 返回设计图</button>
     <button id="lightbox-close" class="lightbox-close" aria-label="关闭">×</button>
     <div class="zoom-tip">双指缩放 · 拖动查看 · 双击复位</div>
     <img id="lightbox-img" alt="设计图放大预览" />
@@ -216,6 +233,7 @@
     const lightboxImg = document.getElementById("lightbox-img");
     const zoomLevel = document.getElementById("zoom-level");
     const pointers = new Map();
+    let lightboxHistoryOpen = false;
 
     let scale = 1;
     let panX = 0;
@@ -249,10 +267,15 @@
     }
 
     function openLightbox(src, alt) {
+      const wasHidden = lightbox.classList.contains("hidden");
       lightboxImg.src = src;
       lightboxImg.alt = alt || "设计图放大预览";
       resetZoom();
       lightbox.classList.remove("hidden");
+      if (wasHidden) {
+        history.pushState({ lightbox: true }, "");
+        lightboxHistoryOpen = true;
+      }
     }
 
     document.querySelectorAll(".diagram-card img").forEach(image => {
@@ -267,13 +290,21 @@
       });
     });
 
-    function closeLightbox() {
+    function hideLightbox() {
       lightbox.classList.add("hidden");
       lightboxImg.removeAttribute("src");
       pointers.clear();
       resetZoom();
     }
 
+    function closeLightbox() {
+      const shouldGoBack = lightboxHistoryOpen;
+      lightboxHistoryOpen = false;
+      hideLightbox();
+      if (shouldGoBack) history.back();
+    }
+
+    document.getElementById("lightbox-back").addEventListener("click", closeLightbox);
     document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
     document.getElementById("zoom-in").addEventListener("click", () => setZoom(scale + 0.5));
     document.getElementById("zoom-out").addEventListener("click", () => setZoom(scale - 0.5));
@@ -347,6 +378,14 @@
     document.addEventListener("keydown", event => {
       if (event.key === "Escape" && !lightbox.classList.contains("hidden")) {
         closeLightbox();
+      }
+    });
+
+    // 手机侧滑返回：先关闭图片预览，而不是离开设计图页面
+    window.addEventListener("popstate", () => {
+      if (lightboxHistoryOpen) {
+        lightboxHistoryOpen = false;
+        hideLightbox();
       }
     });
   </script>
