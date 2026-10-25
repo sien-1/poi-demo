@@ -1,6 +1,15 @@
 // 问卷链接已接入腾讯文档。若后续链接或版本调整，只需修改对应项目的 name / url。
 const surveys = [
   {
+    category: "研究完整版",
+    name: "POI 综合问卷（研究完整版）",
+    description: "整合基本信息、病史、月经与症状及专项量表；当前为二维码演示页，不保存答案。",
+    time: "完整版入口",
+    tag: "完整版草稿",
+    actionLabel: "打开完整版",
+    url: "survey-full.html"
+  },
+  {
     category: "认知功能",
     name: "MMSE 简易版",
     description: "认知功能筛查；具体施测方式与版本按研究流程执行。",
@@ -118,6 +127,8 @@ const list = document.getElementById("survey-list");
 const toast = document.getElementById("toast");
 let toastTimer = null;
 
+window.POI_SURVEYS = surveys;
+
 function showToast(message) {
   toast.textContent = message;
   toast.classList.remove("hidden");
@@ -125,57 +136,59 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.add("hidden"), 2600);
 }
 
-const categories = [...new Set(surveys.map(item => item.category))];
+if (list) {
+  const categories = [...new Set(surveys.map(item => item.category))];
 
-categories.forEach(category => {
-  const group = document.createElement("section");
-  group.className = "survey-group";
+  categories.forEach(category => {
+    const group = document.createElement("section");
+    group.className = "survey-group";
 
-  const heading = document.createElement("h2");
-  heading.textContent = category;
-  group.appendChild(heading);
+    const heading = document.createElement("h2");
+    heading.textContent = category;
+    group.appendChild(heading);
 
-  const grid = document.createElement("div");
-  grid.className = "survey-grid";
+    const grid = document.createElement("div");
+    grid.className = "survey-grid";
 
-  surveys.filter(item => item.category === category).forEach(item => {
-    const card = document.createElement("article");
-    card.className = "survey-card";
+    surveys.filter(item => item.category === category).forEach(item => {
+      const card = document.createElement("article");
+      card.className = "survey-card";
 
-    const top = document.createElement("div");
-    top.className = "survey-card-top";
-    const tag = document.createElement("span");
-    tag.className = "tag";
-    tag.textContent = "随访问卷";
-    const time = document.createElement("span");
-    time.className = "time";
-    time.textContent = item.time;
-    top.appendChild(tag);
-    top.appendChild(time);
+      const top = document.createElement("div");
+      top.className = "survey-card-top";
+      const tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = item.tag || "随访问卷";
+      const time = document.createElement("span");
+      time.className = "time";
+      time.textContent = item.time;
+      top.appendChild(tag);
+      top.appendChild(time);
 
-    const title = document.createElement("h3");
-    title.textContent = item.name;
-    const desc = document.createElement("p");
-    desc.textContent = item.description;
+      const title = document.createElement("h3");
+      title.textContent = item.name;
+      const desc = document.createElement("p");
+      desc.textContent = item.description;
 
-    const button = document.createElement("button");
-    button.className = "start-btn" + (item.url ? "" : " pending");
-    button.textContent = item.url ? "开始填写" : "链接待配置";
-    button.addEventListener("click", () => {
-      if (item.url) {
-        window.open(item.url, "_blank", "noopener");
-      } else {
-        showToast("问卷链接待配置：请让研究团队填入腾讯文档链接。");
-      }
+      const button = document.createElement("button");
+      button.className = "start-btn" + (item.url ? "" : " pending");
+      button.textContent = item.url ? (item.actionLabel || "开始填写") : "链接待配置";
+      button.addEventListener("click", () => {
+        if (item.url) {
+          window.open(item.url, "_blank", "noopener");
+        } else {
+          showToast("问卷链接待配置：请让研究团队填入腾讯文档链接。");
+        }
+      });
+
+      card.appendChild(top);
+      card.appendChild(title);
+      card.appendChild(desc);
+      card.appendChild(button);
+      grid.appendChild(card);
     });
 
-    card.appendChild(top);
-    card.appendChild(title);
-    card.appendChild(desc);
-    card.appendChild(button);
-    grid.appendChild(card);
+    group.appendChild(grid);
+    list.appendChild(group);
   });
-
-  group.appendChild(grid);
-  list.appendChild(group);
-});
+}

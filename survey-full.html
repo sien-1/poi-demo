@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POI 综合问卷（研究完整版）</title>
+  <link rel="stylesheet" href="survey-full.css?v=1" />
+</head>
+<body>
+  <div class="full-shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">POI COMPREHENSIVE ASSESSMENT</p>
+        <h1>早发性卵巢功能不全（POI）问卷</h1>
+        <p class="subtitle">研究完整版草稿 · 基本信息、病史、症状与专项量表</p>
+      </div>
+      <a class="back-link" href="survey.html">← 返回问卷目录</a>
+    </header>
+
+    <div class="draft-banner">
+      <strong>演示填写页</strong>
+      <span>本页面用于完整版流程与二维码展示，不保存或上传所填答案。正式收集以研究团队确认的问卷系统和数据管理规范为准。</span>
+    </div>
+
+    <section class="form-intro">
+      <div class="intro-label">填写说明</div>
+      <div>
+        <p><strong>POI 诊断标准：</strong>年龄 &lt; 40 岁 + 月经稀发/闭经 ≥ 4 个月 + 间隔 &gt; 4 周的 2 次血清 FSH &gt; 25 U/L。确诊须由二级及以上医院完成。</p>
+        <p>本问卷匿名填写，资料严格保密，仅用于健康研究与疾病预防。问卷结果不能替代临床诊断。</p>
+      </div>
+    </section>
+
+    <div class="progress-card">
+      <div>
+        <strong>填写进度</strong>
+        <span id="progress-text">已填写 0 / 0</span>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <span id="progress-bar"></span>
+      </div>
+    </div>
+
+    <main id="survey-form" class="survey-form"></main>
+
+    <section class="completion-card">
+      <div>
+        <p class="eyebrow">PREVIEW COMPLETE</p>
+        <h2>完成浏览与填写</h2>
+        <p>当前页面仅演示完整版问卷的移动端阅读和填写体验。点击下方按钮后可返回问卷目录。</p>
+      </div>
+      <div class="completion-actions">
+        <button id="complete-preview" class="primary-btn" type="button">完成预览</button>
+        <a class="secondary-btn" href="survey.html">返回问卷目录</a>
+      </div>
+    </section>
+
+    <p class="footer-note">研究问卷草稿 · 题目内容由研究团队提供 · 本演示页不收集健康数据</p>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script src="survey.js?v=4"></script>
+  <script src="survey-full.js?v=1"></script>
+</body>
+</html>
