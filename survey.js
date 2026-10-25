@@ -16,7 +16,7 @@ const surveys = [
   },
   {
     category: "骨质疏松",
-    name: "IDF 一分钟",
+    name: "IOF 一分钟",
     description: "骨质疏松风险快速筛查；适合初筛或随访提醒。",
     time: "约 1 分钟",
     url: "https://wj.qq.com/s2/28334272/3ldn/"
@@ -59,7 +59,7 @@ const surveys = [
   {
     category: "睡眠与压力",
     name: "匹兹堡睡眠质量指数（PSQI）",
-    description: "评估近一个月睡眠质量；原表单名可能显示为 PAQI。",
+    description: "评估近一个月的睡眠质量与睡眠相关问题。",
     time: "约 5–10 分钟",
     url: "https://wj.qq.com/s2/28334606/2li8/"
   },
