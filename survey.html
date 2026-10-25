@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POI 随访问卷入口</title>
+  <link rel="stylesheet" href="survey.css" />
+</head>
+<body>
+  <div class="survey-shell">
+    <header class="survey-header">
+      <div>
+        <p class="eyebrow">POI FOLLOW-UP</p>
+        <h1>随访问卷入口</h1>
+        <p class="subtitle">请选择本次需要填写的量表。问卷将在腾讯文档中完成。</p>
+      </div>
+      <a class="back-link" href="index.html">← 返回演示入口</a>
+    </header>
+
+    <div class="notice">
+      <strong>填写前请确认</strong>
+      <p>本页为随访问卷入口原型。请按研究团队的安排选择对应量表；涉及心理、情绪或自杀相关条目时，如感到不适请暂停填写，并联系研究团队或专业人员。</p>
+    </div>
+
+    <section class="intro-card">
+      <div class="intro-mark">表</div>
+      <div>
+        <h2>请选择一份问卷</h2>
+        <p>量表名称、预计时长与填写链接由研究团队配置。当前未接入腾讯文档的卡片会显示“链接待配置”。</p>
+      </div>
+    </section>
+
+    <div id="survey-list" class="survey-list"></div>
+
+    <p class="footer-note">
+      入口页原型 · 不在本页保存答案 · 问卷数据以腾讯文档及研究团队的数据管理规范为准
+    </p>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="survey.js"></script>
+</body>
+</html>

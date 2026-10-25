@@ -1,0 +1,254 @@
+:root {
+  --ink: #17313c;
+  --navy: #102a35;
+  --teal: #2d6f6b;
+  --mint: #e8f3ef;
+  --gold: #c99a43;
+  --bg: #f3f6f6;
+  --line: #dbe5e4;
+  --muted: #70817f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 34px 18px 60px;
+  background:
+    radial-gradient(900px 380px at 50% -160px, #ffffff 0%, rgba(255, 255, 255, 0) 70%),
+    var(--bg);
+  color: var(--ink);
+  font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+  line-height: 1.65;
+}
+
+.survey-shell {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.survey-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.back-link {
+  flex-shrink: 0;
+  padding: 8px 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--teal);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.notice {
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border: 1px solid #eadcc0;
+  border-radius: 12px;
+  background: #fffaf0;
+}
+
+.notice strong {
+  font-size: 13px;
+  color: #8a6526;
+}
+
+.notice p {
+  margin: 4px 0 0;
+  color: #7e6c4d;
+  font-size: 12px;
+}
+
+.intro-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.intro-mark {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f0d7a8;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.intro-card h2 {
+  margin: 0 0 3px;
+  font-size: 18px;
+}
+
+.intro-card p {
+  margin: 0;
+  color: #b8ceca;
+  font-size: 12px;
+}
+
+.survey-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.survey-group h2 {
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 4px solid var(--teal);
+  font-size: 18px;
+}
+
+.survey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.survey-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(16, 42, 53, 0.05);
+}
+
+.survey-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  display: inline-flex;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--mint);
+  color: var(--teal);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.time {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.survey-card h3 {
+  margin: 0 0 5px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.survey-card p {
+  flex: 1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.start-btn {
+  align-self: flex-start;
+  margin-top: 13px;
+  padding: 7px 12px;
+  border: 1px solid var(--teal);
+  border-radius: 8px;
+  background: var(--teal);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.start-btn.pending {
+  border-color: var(--line);
+  background: #f5f8f7;
+  color: var(--muted);
+}
+
+.footer-note {
+  margin: 28px 0 0;
+  color: #9aa9a7;
+  font-size: 11px;
+  text-align: center;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: rgba(16, 42, 53, 0.94);
+  color: #ffffff;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.toast.hidden {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 22px 14px 42px;
+  }
+
+  .survey-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .survey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toast {
+    max-width: calc(100vw - 32px);
+    white-space: normal;
+    text-align: center;
+  }
+}
