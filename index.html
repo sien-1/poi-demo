@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>POI 数字疗法 · 演示入口</title>
+  <title>POI 数字随访管理平台 · V0.2.1</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -128,34 +128,37 @@
 </head>
 <body>
   <div class="portal">
-    <p class="eyebrow">POI · DIGITAL THERAPEUTICS</p>
-    <h1>数字疗法框架演示</h1>
+    <p class="eyebrow">POI · DIGITAL FOLLOW-UP · V0.2.1</p>
+    <h1>数字随访管理平台</h1>
     <p class="subtitle">
-      展示早发性卵巢功能不全（POI）患者与医生在院外管理中的两种使用场景。
-      当前为功能原型，所有患者数据均为模拟数据，按钮操作为演示占位。
+      以临床医嘱为起点，连接患者执行日历与医生随访工作台。
+      当前版本使用单患者模拟数据，可在同一浏览器内完成患者端与医生端联动演示。
     </p>
 
     <div class="cards">
-      <a class="entry" href="web/index.html">
-        <div class="entry-icon">▦</div>
-        <h2>网页端 · 管理框架</h2>
-        <p>面向医生与管理工作：风险评估、全周期管理、随访任务、健康监测、用药审核和医生工作台。</p>
-        <span>打开网页端 →</span>
+      <a class="entry" href="v021/app/index.html">
+        <div class="entry-icon">▯</div>
+        <h2>患者端 · 三个模块</h2>
+        <p>医嘱上传、个人干预日历、病例夹与消息。支持模拟识别、患者核对和任务打卡。</p>
+        <span>打开患者端 →</span>
       </a>
 
-      <a class="entry" href="app/index.html">
-        <div class="entry-icon">▯</div>
-        <h2>手机 App · 患者端</h2>
-        <p>面向患者日常使用：今日任务、风险状态、随访复诊、健康教育、健康监测与用药记录。</p>
-        <span>打开手机端 →</span>
+      <a class="entry" href="v021/doctor/index.html">
+        <div class="entry-icon">▦</div>
+        <h2>医生端 · 四个模块</h2>
+        <p>随访患者目录、数字医嘱套、随访数据大盘和业务处理大盘。</p>
+        <span>打开医生端 →</span>
       </a>
     </div>
 
-    <a class="diagrams-link" href="diagrams.html">查看两张设计图（概念图 + 技术架构图）→</a>
-    <a class="survey-cta" href="survey.html">填写随访问卷 →</a>
+    <a class="diagrams-link" href="v021/index.html">查看 V0.2.1 双端入口 →</a>
+    <a class="survey-cta" href="survey.html">现有随访问卷 →</a>
 
     <p class="note">
-      功能原型 · 非真实医疗系统 · 所有数据为模拟数据 · 不构成诊断或治疗建议
+      前端闭环演示 · 问卷入口已迁移保留 · 数据仅存于当前浏览器 · 不构成诊断或治疗建议
+      <br><a class="diagrams-link" href="web/index.html">查看旧版 V0.1 网页端</a>
+      <a class="diagrams-link" href="app/index.html">查看旧版患者 App</a>
+      <a class="diagrams-link" href="diagrams.html">查看设计图</a>
     </p>
   </div>
 </body>

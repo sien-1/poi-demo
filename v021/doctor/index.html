@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POI 医生端 · V0.2.1</title>
+  <link rel="stylesheet" href="../shared/base.css" />
+  <link rel="stylesheet" href="doctor.css" />
+</head>
+<body>
+  <div class="doctor-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">POI</div>
+        <div>
+          <strong>数字随访平台</strong>
+          <span>医生工作台 · V0.2.1</span>
+        </div>
+      </div>
+
+      <nav class="side-nav">
+        <button class="side-nav-item active" data-view="patients"><span>患</span>随访患者目录</button>
+        <button class="side-nav-item" data-view="ordersets"><span>套</span>数字医嘱套</button>
+        <button class="side-nav-item" data-view="analytics"><span>数</span>随访数据大盘</button>
+        <button class="side-nav-item" data-view="operations"><span>办</span>业务处理大盘</button>
+      </nav>
+
+      <div class="sidebar-actions">
+        <a class="sidebar-link" href="../app/index.html">打开患者端 →</a>
+        <button class="sidebar-link" data-action="reset-demo">重置演示数据</button>
+      </div>
+    </aside>
+
+    <main class="doctor-main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">POI CLINICIAN WORKSPACE</p>
+          <h1 id="page-title">随访患者目录</h1>
+        </div>
+        <div class="topbar-meta">
+          <span class="pill gold">演示日期 · 2026-11-01</span>
+          <span class="doctor-chip">胡医生 · 妇科内分泌（演示）</span>
+        </div>
+      </header>
+
+      <div class="demo-banner">
+        <strong>模拟工作台</strong>
+        <span>当前仅使用一位联动患者 P001；其余列表、人数和指标均为界面演示数据。</span>
+      </div>
+
+      <section class="view active" id="view-patients">
+        <div id="pending-review"></div>
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">PATIENT DIRECTORY</p>
+            <h2>按最近入组排序</h2>
+          </div>
+          <span class="muted">最近入组患者置顶</span>
+        </div>
+        <div class="patient-layout">
+          <section class="panel directory-panel">
+            <div class="search-row">
+              <input id="patient-search" type="search" placeholder="搜索姓名或患者编号" />
+              <button class="secondary-btn" data-action="focus-search">检索</button>
+            </div>
+            <div id="patient-list" class="patient-list"></div>
+          </section>
+          <aside id="patient-detail" class="panel detail-panel"></aside>
+        </div>
+      </section>
+
+      <section class="view" id="view-ordersets">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">DIGITAL ORDER SETS</p>
+            <h2>数字医嘱套中心</h2>
+          </div>
+          <span class="pill blue">任务模板，不是药物处方</span>
+        </div>
+        <div id="template-list" class="template-list"></div>
+        <div class="info-strip">
+          数字医嘱套用于配置随访任务、频次和应答方式；涉及用药、剂量或疗程调整时，仍以正式临床处方流程为准。
+        </div>
+      </section>
+
+      <section class="view" id="view-analytics">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">FOLLOW-UP ANALYTICS</p>
+            <h2>随访数据大盘</h2>
+          </div>
+          <span class="pill gold">模拟队列 · 2026-11-01</span>
+        </div>
+        <div id="metric-grid" class="metric-grid"></div>
+        <div class="analytics-grid">
+          <section class="panel chart-panel">
+            <div class="section-head">
+              <div><h3>随访深度</h3><p>按患者累计随访次数分组</p></div>
+              <span class="muted">n = 128</span>
+            </div>
+            <div id="followup-chart" class="bar-chart"></div>
+          </section>
+          <section class="panel chart-panel">
+            <div class="section-head">
+              <div><h3>年龄结构</h3><p>模拟入组患者年龄分组</p></div>
+              <span class="muted">演示数据</span>
+            </div>
+            <div id="age-chart" class="bar-chart"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-operations">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">OPERATIONS DESK</p>
+            <h2>业务处理大盘</h2>
+          </div>
+          <span class="pill red" id="operation-count">0 项待处理</span>
+        </div>
+        <div class="operations-grid">
+          <section class="panel operation-card">
+            <div class="section-head"><h3>待审核医嘱</h3><span class="pill gold">人工审核</span></div>
+            <div id="review-queue"></div>
+          </section>
+          <section class="panel operation-card">
+            <div class="section-head"><h3>本周复诊</h3><span class="muted">11-01 至 11-07</span></div>
+            <div class="simple-list">
+              <div><strong>李女士 · P002</strong><span>11-05 · 已提醒</span></div>
+              <div><strong>周女士 · P006</strong><span>11-07 · 待确认</span></div>
+            </div>
+          </section>
+          <section class="panel operation-card">
+            <div class="section-head"><h3>下周复诊</h3><span class="muted">11-08 至 11-14</span></div>
+            <div class="simple-list">
+              <div><strong>张女士 · P003</strong><span>11-08 · 已确认</span></div>
+              <div><strong>陈女士 · P004</strong><span>11-12 · 待提醒</span></div>
+            </div>
+          </section>
+          <section class="panel operation-card">
+            <div class="section-head"><h3>逾期与失访</h3><span class="pill red">需人工跟进</span></div>
+            <div class="simple-list">
+              <div><strong>陈女士 · P004</strong><span>1 项任务逾期</span></div>
+              <div><strong>赵女士 · P005</strong><span>失访待联系</span></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <footer class="page-footer">POI 数字随访管理平台 · V0.2.1 · 数据不构成诊断或治疗建议</footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="../shared/demo-store.js"></script>
+  <script src="doctor.js"></script>
+</body>
+</html>

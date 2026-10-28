@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POI 数字随访管理平台 · V0.2.1</title>
+  <link rel="stylesheet" href="shared/base.css" />
+  <style>
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px 18px;
+      background:
+        radial-gradient(1000px 500px at 50% -15%, rgba(90, 157, 143, 0.32), transparent 70%),
+        #0d252e;
+    }
+    .portal { width: min(980px, 100%); }
+    .portal .eyebrow { color: #e3c686; }
+    h1 { margin: 0; color: #fff; font-size: clamp(28px, 5vw, 46px); }
+    .lead { max-width: 720px; margin: 13px 0 0; color: #b9cfca; font-size: 14px; }
+    .version {
+      display: inline-flex;
+      margin-top: 16px;
+      padding: 4px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      color: #f0d7a8;
+      font-size: 11px;
+    }
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .entry {
+      display: block;
+      min-height: 220px;
+      padding: 24px;
+      border-radius: 20px;
+      background: #fff;
+      color: var(--ink);
+      text-decoration: none;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+      transition: transform 180ms ease;
+    }
+    .entry:hover { transform: translateY(-4px); }
+    .entry-mark {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .entry h2 { margin: 0 0 8px; font-size: 21px; }
+    .entry p { margin: 0; color: var(--muted); font-size: 12px; }
+    .entry-list { display: grid; gap: 5px; margin: 15px 0 0; padding: 0; list-style: none; color: #48616b; font-size: 11px; }
+    .entry-list li::before { content: "·"; margin-right: 7px; color: var(--teal); }
+    .entry-cta { display: inline-block; margin-top: 20px; color: var(--teal); font-size: 12px; font-weight: 800; }
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #c5d7d3;
+      font-size: 11px;
+    }
+    .flow span::after { content: "→"; margin-left: 8px; color: #e3c686; }
+    .flow span:last-child::after { content: ""; }
+    .portal-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+      color: #8fa9a4;
+      font-size: 11px;
+    }
+    .portal-footer a { color: #e5cd99; }
+    @media (max-width: 680px) {
+      body { align-items: start; }
+      .entry-grid { grid-template-columns: 1fr; }
+      .entry { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="portal">
+    <p class="eyebrow">POI DIGITAL FOLLOW-UP · V0.2.1</p>
+    <h1>数字随访管理平台</h1>
+    <p class="lead">以临床医嘱为起点，用日历任务连接患者执行与医生随访。当前版本使用单患者模拟数据，可在同一浏览器内完成患者端与医生端联动演示。</p>
+    <span class="version">V0.2.1 · 前端闭环演示</span>
+
+    <div class="entry-grid">
+      <a class="entry" href="app/index.html">
+        <span class="entry-mark">患</span>
+        <h2>患者端 · 三个模块</h2>
+        <p>上传医嘱、查看干预日历、查阅病例夹与消息。</p>
+        <ul class="entry-list">
+          <li>模拟拍照识别与患者核对</li>
+          <li>日历任务与完成记录</li>
+          <li>问卷、健康教育与病例统一归档</li>
+        </ul>
+        <span class="entry-cta">进入患者端 →</span>
+      </a>
+
+      <a class="entry" href="doctor/index.html">
+        <span class="entry-mark">医</span>
+        <h2>医生端 · 四个模块</h2>
+        <p>患者目录、数字医嘱套、随访数据和业务处理。</p>
+        <ul class="entry-list">
+          <li>审核模拟医嘱并生成任务</li>
+          <li>查看患者双视图与任务执行</li>
+          <li>处理复诊、逾期和待审核事项</li>
+        </ul>
+        <span class="entry-cta">进入医生端 →</span>
+      </a>
+    </div>
+
+    <div class="flow">
+      <span>患者上传模拟医嘱</span>
+      <span>患者核对</span>
+      <span>医生审核</span>
+      <span>生成任务日历</span>
+      <span>患者打卡</span>
+      <span>医生查看</span>
+    </div>
+
+    <div class="portal-footer">
+      <span>演示数据 · 不保存真实患者信息 · 不构成诊断或治疗建议</span>
+      <span><a href="../survey.html">查看现有问卷入口</a> · <a href="../index.html">返回旧版入口</a></span>
+    </div>
+  </main>
+</body>
+</html>
