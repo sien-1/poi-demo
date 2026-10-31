@@ -121,8 +121,8 @@ function renderP001Detail(state) {
     </div>
     <div class="double-view">
       <section class="sub-card">
-        <h3>专病评估</h3>
-        <p>近期症状趋势（演示）</p>
+        <h3>量表与症状</h3>
+        <p>近期评估趋势（演示）</p>
         <div class="mini-bars">
           <div class="mini-bar-row"><span>睡眠</span><div class="mini-bar-track"><span style="width:62%"></span></div><b>62</b></div>
           <div class="mini-bar-row"><span>压力</span><div class="mini-bar-track"><span style="width:54%"></span></div><b>中</b></div>
@@ -137,6 +137,22 @@ function renderP001Detail(state) {
         </div>
       </section>
     </div>
+    <section class="sub-card clinical-card">
+      <div class="clinical-head">
+        <div>
+          <h3>辅助评估数据</h3>
+          <p>专科指标仅在医生端展示，不向患者输出推算概率。</p>
+        </div>
+        <span class="pill gold">模拟数据</span>
+      </div>
+      <div class="lab-chips">
+        <span><b>FSH</b>${state.clinical.fsh}</span>
+        <span><b>E2</b>${state.clinical.e2}</span>
+        <span><b>AMH</b>${state.clinical.amh}</span>
+        <span><b>AFC</b>${state.clinical.afc}</span>
+      </div>
+      <p class="clinical-note">${state.clinical.note}</p>
+    </section>
     <div class="detail-actions">
       ${
         state.order.status === "doctor_review"

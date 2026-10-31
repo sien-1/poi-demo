@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>健康随访问卷</title>
+  <style>
+    :root {
+      --ink: #17313c;
+      --navy: #102a35;
+      --teal: #2d6f6b;
+      --mint: #e8f3ef;
+      --gold: #c99a43;
+      --line: #dbe5e4;
+      --muted: #70817f;
+      --bg: #f3f6f6;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      padding: 20px;
+      background:
+        radial-gradient(850px 400px at 50% -100px, #ffffff 0%, rgba(255, 255, 255, 0) 70%),
+        var(--bg);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    .task-shell {
+      width: min(560px, 100%);
+      max-width: 100%;
+      min-width: 0;
+    }
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .eyebrow {
+      margin: 0 0 4px;
+      color: var(--teal);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+    }
+    h1 { margin: 0; font-size: 27px; }
+    .back {
+      flex-shrink: 0;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #fff;
+      color: var(--teal);
+      font-size: 11px;
+      text-decoration: none;
+    }
+    .banner {
+      max-width: 100%;
+      margin-bottom: 12px;
+      padding: 10px 13px;
+      border: 1px solid #ead8b4;
+      border-radius: 11px;
+      background: #fffaf0;
+      color: #7e6842;
+      font-size: 11px;
+    }
+    .task-card {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 18px 48px rgba(16, 42, 53, 0.09);
+    }
+    .task-mark {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 14px;
+      background: var(--mint);
+      color: var(--teal);
+      font-size: 20px;
+      font-weight: 800;
+    }
+    h2 { margin: 0 0 7px; font-size: 22px; }
+    .lead { margin: 0; color: var(--muted); font-size: 12px; }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 18px 0;
+    }
+    .meta div {
+      padding: 11px;
+      border-radius: 10px;
+      background: #f7faf9;
+    }
+    .meta span { display: block; color: var(--muted); font-size: 9px; }
+    .meta strong { display: block; margin-top: 2px; font-size: 12px; }
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: #4e626a;
+      font-size: 10px;
+    }
+    .consent input { margin-top: 3px; accent-color: var(--teal); }
+    .consent span { min-width: 0; overflow-wrap: anywhere; }
+    .start {
+      width: 100%;
+      margin-top: 14px;
+      padding: 11px;
+      border: 1px solid var(--teal);
+      border-radius: 10px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .start:disabled {
+      border-color: #d5dfdd;
+      background: #eef3f2;
+      color: #92a09e;
+      cursor: not-allowed;
+    }
+    .placeholder {
+      display: none;
+      margin-top: 13px;
+      padding: 14px;
+      border: 1px dashed #b7ceca;
+      border-radius: 11px;
+      background: #f6fbf9;
+      color: #4d6869;
+      font-size: 11px;
+    }
+    .placeholder.visible { display: block; }
+    .placeholder strong { display: block; margin-bottom: 4px; color: var(--teal); }
+    .footer {
+      margin: 16px 0 0;
+      color: #95a4a2;
+      font-size: 10px;
+      text-align: center;
+    }
+    @media (max-width: 520px) {
+      body {
+        display: block;
+        padding: 16px 13px;
+      }
+      .task-shell {
+        width: calc(100vw - 26px);
+        max-width: calc(100vw - 26px);
+      }
+      .task-card,
+      .banner,
+      .header,
+      .meta,
+      .consent,
+      .start {
+        max-width: 100%;
+      }
+      .header { flex-direction: column; gap: 8px; }
+      .meta { grid-template-columns: 1fr; }
+      .task-card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="task-shell">
+    <header class="header">
+      <div>
+        <p class="eyebrow">HEALTH FOLLOW-UP</p>
+        <h1>健康随访问卷</h1>
+      </div>
+      <a class="back" href="v021/app/index.html">← 返回患者端</a>
+    </header>
+
+    <div class="banner">
+      当前为流程演示。正式问卷内容、题目顺序和预计时长由研究团队确认后配置。
+    </div>
+
+    <section class="task-card">
+      <div class="task-mark">卷</div>
+      <h2>完成本次健康评估</h2>
+      <p class="lead">本任务由研究团队统一下发。所有必填内容将在一个连续流程中呈现，请根据实际情况完成。</p>
+
+      <div class="meta">
+        <div><span>任务类型</span><strong>随访问卷</strong></div>
+        <div><span>任务状态</span><strong>待填写</strong></div>
+      </div>
+
+      <label class="consent">
+        <input id="consent" type="checkbox" />
+        <span>我已了解本页面仅为前端流程演示，当前不会收集或上传真实健康信息。</span>
+      </label>
+      <button id="start-survey" class="start" type="button" disabled>开始填写</button>
+      <div id="placeholder" class="placeholder">
+        <strong>患者端问卷入口已统一</strong>
+        当前尚未接入研究团队确认后的正式题目集合。完成后请返回患者端任务列表模拟提交。
+      </div>
+    </section>
+
+    <p class="footer">不展示具体量表名称 · 专科指标由医生端查看</p>
+  </main>
+
+  <script>
+    const consent = document.getElementById("consent");
+    const start = document.getElementById("start-survey");
+    const placeholder = document.getElementById("placeholder");
+
+    consent.addEventListener("change", () => {
+      start.disabled = !consent.checked;
+    });
+
+    start.addEventListener("click", () => {
+      placeholder.classList.add("visible");
+      start.textContent = "填写入口已打开";
+      start.disabled = true;
+    });
+  </script>
+</body>
+</html>

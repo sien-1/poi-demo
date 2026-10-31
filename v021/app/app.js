@@ -222,7 +222,7 @@ function renderTasks(state) {
             }
             ${
               task.kind === "survey"
-                ? `<a class="secondary-btn" href="../../survey.html" target="_blank" rel="noopener">打开问卷</a>`
+                ? `<a class="secondary-btn" href="../../patient-survey.html" target="_blank" rel="noopener">开始问卷</a>`
                 : ""
             }
           </div>

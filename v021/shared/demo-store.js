@@ -13,6 +13,13 @@
       nextVisit: "2026-11-24",
       phone: "138****0000"
     },
+    clinical: {
+      fsh: "32.5 U/L",
+      e2: "28 pg/mL",
+      amh: "0.42 ng/mL",
+      afc: "3 个",
+      note: "仅作医生端辅助展示，风险模型尚未验证"
+    },
     order: {
       id: "ORD-20261101-01",
       status: "not_uploaded",
@@ -50,7 +57,7 @@
           { title: "记录今日执行情况", kind: "daily", offset: 0 },
           { title: "观看生殖健康科普短剧第1集", kind: "education", offset: 7 },
           { title: "回顾并准备近期检查资料", kind: "records", offset: 16 },
-          { title: "填写 POI 专病随访问卷", kind: "survey", offset: 29 }
+          { title: "完成本月健康随访问卷", kind: "survey", offset: 29 }
         ]
       }
     ],

@@ -259,6 +259,33 @@ body {
 }
 .task-mini span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+.clinical-card { margin-top: 10px; }
+.clinical-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.lab-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+.lab-chips span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 9px;
+  border: 1px solid #dfe8e7;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #4d626b;
+  font-size: 9px;
+}
+.lab-chips b { color: #2d6f6b; font-size: 9px; }
+.clinical-note { margin: 10px 0 0 !important; color: #8a722f !important; }
+
 .detail-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
 
 .template-list {
