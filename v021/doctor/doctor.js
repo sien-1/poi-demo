@@ -153,6 +153,26 @@ function renderP001Detail(state) {
       </div>
       <p class="clinical-note">${state.clinical.note}</p>
     </section>
+    <section class="sub-card clinical-card">
+      <div class="clinical-head">
+        <div>
+          <h3>认知评估</h3>
+          <p>医生端专用入口，按研究流程由医生或研究团队施测。</p>
+        </div>
+        <span class="pill blue">医生端</span>
+      </div>
+      <div class="cognitive-links">
+        <a class="cognitive-link" href="https://wj.qq.com/s2/28334522/v3l1/" target="_blank" rel="noopener">
+          <strong>MMSE 简易版</strong>
+          <span>约 5–10 分钟 · 由医生或研究团队施测</span>
+        </a>
+        <a class="cognitive-link" href="https://wj.qq.com/s2/28334543/rjs1/" target="_blank" rel="noopener">
+          <strong>MoCA</strong>
+          <span>约 10–15 分钟 · 与 MMSE 按研究方案选用</span>
+        </a>
+      </div>
+      <p class="clinical-note">MMSE 与 MoCA 不进入患者端统一问卷，使用时按研究方案选择，不重复施测。</p>
+    </section>
     <div class="detail-actions">
       ${
         state.order.status === "doctor_review"

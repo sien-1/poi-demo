@@ -10,20 +10,6 @@ const surveys = [
     url: "survey-full.html"
   },
   {
-    category: "认知功能",
-    name: "MMSE 简易版",
-    description: "认知功能筛查；具体施测方式与版本按研究流程执行。",
-    time: "约 5–10 分钟",
-    url: "https://wj.qq.com/s2/28334522/v3l1/"
-  },
-  {
-    category: "认知功能",
-    name: "MoCA",
-    description: "蒙特利尔认知评估；与 MMSE 存在用途重叠，按研究方案选用。",
-    time: "约 10–15 分钟",
-    url: "https://wj.qq.com/s2/28334543/rjs1/"
-  },
-  {
     category: "骨质疏松",
     name: "IOF 一分钟",
     description: "骨质疏松风险快速筛查；适合初筛或随访提醒。",
@@ -53,15 +39,8 @@ const surveys = [
   },
   {
     category: "Kupperman",
-    name: "Kupperman 原版 11 项",
-    description: "围绝经期症状评估；与 13 项版本二选一，按研究方案执行。",
-    time: "约 3–5 分钟",
-    url: "https://wj.qq.com/s2/28334591/qoc4/"
-  },
-  {
-    category: "Kupperman",
     name: "Kupperman 13 项",
-    description: "围绝经期症状评估；与原版 11 项二选一，按研究方案执行。",
+    description: "围绝经期症状评估，统一使用 13 项版本。",
     time: "约 3–5 分钟",
     url: "https://wj.qq.com/s2/28334597/2jxi/"
   },
@@ -106,13 +85,6 @@ const surveys = [
     description: "涉及敏感心理条目；如出现明显不适，请暂停并联系研究团队。",
     time: "约 5–10 分钟",
     url: "https://wj.qq.com/s2/28334621/e47o/"
-  },
-  {
-    category: "症状与生活质量",
-    name: "痛经症状量表（CMSS）",
-    description: "记录痛经相关症状及严重程度。",
-    time: "约 3–5 分钟",
-    url: "https://wj.qq.com/s2/28334652/smnq/"
   },
   {
     category: "症状与生活质量",

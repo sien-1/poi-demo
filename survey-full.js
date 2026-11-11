@@ -452,7 +452,7 @@ const sections = [
     "quality",
     "05",
     "症状与生活质量专项量表",
-    "31–32：由研究方案选择对应量表",
+    "31：由研究方案选择对应量表",
     `
       ${question(
         "menqol",
@@ -460,53 +460,47 @@ const sections = [
         "围绝经期生存质量量表（MENQOL）",
         `<div class="scale-grid">${scaleCard("MENQOL", "MENQOL", "评估近期生活质量及症状对日常的影响。")}</div>`
       )}
-      ${question(
-        "cmss",
-        "32",
-        "COX 痛经症状量表（CMSS）",
-        `<div class="scale-grid">${scaleCard("CMSS", "CMSS", "记录痛经相关症状及严重程度。")}</div>`
-      )}
     `
   ),
   section(
     "mental",
     "06",
     "心理、情绪与睡眠",
-    "33–38：按研究流程和施测要求使用",
+    "32–37：按研究流程和施测要求使用",
     `
       ${question(
         "hamd",
-        "33",
+        "32",
         "汉密尔顿抑郁量表（HAMD）",
         `<div class="scale-grid">${scaleCard("HAMD", "HAMD", "抑郁相关症状评估，需由研究团队确认施测方式。")}</div>`
       )}
       ${question(
         "hama",
-        "34",
+        "33",
         "汉密尔顿焦虑量表（HAMA）",
         `<div class="scale-grid">${scaleCard("HAMA", "HAMA", "焦虑相关症状评估，结果需结合临床判断。")}</div>`
       )}
       ${question(
         "cpss",
-        "35",
+        "34",
         "压力知觉量表（CPSS）",
         `<div class="scale-grid">${scaleCard("CPSS", "CPSS", "评估近期主观压力水平。")}</div>`
       )}
       ${question(
         "bsi",
-        "36",
+        "35",
         "贝克自杀意念量表中文版（BSI-CV）",
         `<div class="scale-grid">${scaleCard("BSI-CV", "BSI-CV", "涉及敏感心理条目；如出现明显不适，请暂停并联系研究团队。")}</div>`
       )}
       ${question(
         "ais",
-        "37",
+        "36",
         "阿森斯失眠量表（AIS）",
         `<div class="scale-grid">${scaleCard("AIS", "AIS", "睡眠困难及日间影响的自评。")}</div>`
       )}
       ${question(
         "psqi",
-        "38",
+        "37",
         "匹兹堡睡眠质量指数（PSQI）",
         `<div class="scale-grid">${scaleCard("PSQI", "PSQI", "评估近一个月的睡眠质量与睡眠相关问题。")}</div>`
       )}
@@ -516,41 +510,29 @@ const sections = [
   section(
     "bone",
     "07",
-    "Kupperman、骨质疏松与认知",
-    "39–43：按研究方案选用，不需要全部填写",
+    "Kupperman 与骨质疏松",
+    "38–40：按研究方案选用，不需要全部填写",
     `
       <div class="scale-grid" style="margin: 16px 0 4px;">
-        ${scaleCard("Kupperman", "Kupperman 量表", "围绝经期症状评估；11 项与 13 项版本按方案二选一。")}
+        ${scaleCard("Kupperman 13 项", "Kupperman 13 项量表", "围绝经期症状评估，统一使用 13 项版本。")}
       </div>
       ${question(
         "iof",
-        "39",
+        "38",
         "IOF 一分钟骨质疏松风险测试",
         `<div class="scale-grid">${scaleCard("IOF 一分钟", "IOF 一分钟", "骨质疏松风险快速筛查。")}</div>`
       )}
       ${question(
         "osta",
-        "40",
+        "39",
         "亚洲骨质疏松自我评估工具（OSTA）",
         `<div class="scale-grid">${scaleCard("OSTA", "OSTA", "骨质疏松自我筛查工具。")}</div>`
       )}
       ${question(
         "frax",
-        "41",
+        "40",
         "FRAX（WHO 骨折风险评估工具）",
         `<div class="scale-grid">${scaleCard("FRAX", "FRAX", "骨折风险评估工具，需按研究要求录入相应参数。")}</div>`
-      )}
-      ${question(
-        "mmse",
-        "42",
-        "简易精神状态检查（MMSE）",
-        `<div class="scale-grid">${scaleCard("MMSE", "MMSE", "认知功能筛查，具体施测方式按研究流程执行。")}</div>`
-      )}
-      ${question(
-        "moca",
-        "43",
-        "蒙特利尔认知评估（MoCA）",
-        `<div class="scale-grid">${scaleCard("MoCA", "MoCA", "认知评估，具体施测方式按研究流程执行。")}</div>`
       )}
     `,
     true
@@ -563,7 +545,7 @@ const sections = [
     `
       ${question(
         "fertility-intention",
-        "44",
+        "41",
         "是否有生育意愿？",
         `
           ${options("fertility-intention", ["无", "有"])}
