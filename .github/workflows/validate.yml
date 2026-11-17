@@ -1,0 +1,18 @@
+name: Validate static project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run project checks
+        shell: pwsh
+        run: ./tools/validate-project.ps1
