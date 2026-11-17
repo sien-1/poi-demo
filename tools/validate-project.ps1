@@ -124,6 +124,57 @@ else {
     Add-Fail "questionnaire numbering mismatch; duplicate=[$($duplicateNumbers.Name -join ',')] missing=[$($missingNumbers -join ',')] extra=[$($extraNumbers -join ',')]"
 }
 
+$requiredBackendFiles = @(
+    "backend\server.ps1",
+    "backend\start.ps1",
+    "backend\test-api.ps1",
+    "backend\README.md",
+    "backend\API.md",
+    "backend\data\demo-seed.json",
+    "backend\lib\http.ps1",
+    "backend\lib\auth.ps1",
+    "backend\lib\access.ps1",
+    "backend\lib\resources.ps1",
+    "backend\lib\batches.ps1"
+)
+$missingBackendFiles = @(
+    $requiredBackendFiles | Where-Object { -not (Test-Path -LiteralPath (Join-Path $root $_)) }
+)
+if ($missingBackendFiles.Count -eq 0) {
+    Add-Pass "backend MVP required files exist"
+}
+else {
+    Add-Fail "backend MVP files missing: $($missingBackendFiles -join ', ')"
+}
+
+try {
+    $seedJson = Get-Content -LiteralPath (Join-Path $root "backend\data\demo-seed.json") -Raw |
+        ConvertFrom-Json
+    $seedCountsValid =
+        @($seedJson.patients).Count -eq 10 -and
+        @($seedJson.organizations).Count -eq 2 -and
+        @($seedJson.departments).Count -eq 3 -and
+        @($seedJson.visits).Count -eq 30
+    if ($seedCountsValid) {
+        Add-Pass "backend synthetic seed has expected coverage"
+    }
+    else {
+        Add-Fail "backend synthetic seed coverage is incomplete"
+    }
+}
+catch {
+    Add-Fail "backend synthetic seed is not valid JSON: $($_.Exception.Message)"
+}
+
+$backendTestOutput = & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $root "backend\test-api.ps1") 2>&1
+if ($LASTEXITCODE -eq 0) {
+    Add-Pass "backend HTTP acceptance tests pass"
+}
+else {
+    $backendTestOutput | ForEach-Object { Write-Output $_ }
+    Add-Fail "backend HTTP acceptance tests failed"
+}
+
 $checks | ForEach-Object { Write-Output $_ }
 Write-Output ""
 Write-Output "SUMMARY`tchecks=$($checks.Count - $failures.Count) passed, $($failures.Count) failed"

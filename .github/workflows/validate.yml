@@ -1,4 +1,4 @@
-name: Validate static project
+name: Validate project
 
 on:
   push:
@@ -13,6 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Run project checks
+      - name: Run frontend and backend checks
         shell: pwsh
         run: ./tools/validate-project.ps1

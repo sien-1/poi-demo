@@ -1,0 +1,1195 @@
+{
+  "version": "poi-backend-mvp-0.1",
+  "seedDate": "2026-11-17",
+  "metadata": {
+    "dataClasses": [
+      {
+        "code": "identity",
+        "name": "直接身份信息",
+        "sensitivity": "restricted",
+        "apiPolicy": "列表、研究视图和默认详情均不返回；正式版须单独授权并记录访问。"
+      },
+      {
+        "code": "care",
+        "name": "诊疗关系与随访",
+        "sensitivity": "clinical",
+        "apiPolicy": "按机构、科室、医生和有效诊疗关系裁剪。"
+      },
+      {
+        "code": "clinical",
+        "name": "临床检查与量表结果",
+        "sensitivity": "clinical",
+        "apiPolicy": "患者只返回本人任务与问卷；研究角色只返回去标识化摘要。"
+      },
+      {
+        "code": "questionnaire",
+        "name": "问卷原始答案",
+        "sensitivity": "protected",
+        "apiPolicy": "不进入普通列表；医生默认查看摘要，原始答案保留在受控业务库。"
+      },
+      {
+        "code": "task",
+        "name": "随访任务",
+        "sensitivity": "clinical",
+        "apiPolicy": "按任务下发时的机构、科室、医生上下文隔离。"
+      },
+      {
+        "code": "audit",
+        "name": "审计日志",
+        "sensitivity": "security",
+        "apiPolicy": "仅管理角色按单位范围查看，只增不改。"
+      }
+    ],
+    "roles": [
+      { "code": "patient", "name": "患者" },
+      { "code": "clinician", "name": "医生" },
+      { "code": "department_admin", "name": "科室管理员" },
+      { "code": "hospital_admin", "name": "医院管理员" },
+      { "code": "researcher", "name": "研究人员" }
+    ]
+  },
+  "organizations": [
+    {
+      "organizationId": "ORG-WCH",
+      "code": "DEMO-WCH",
+      "name": "华西第二医院（演示）",
+      "type": "hospital",
+      "status": "active"
+    },
+    {
+      "organizationId": "ORG-WEST",
+      "code": "DEMO-WEST",
+      "name": "西部妇幼协作医院（演示）",
+      "type": "hospital",
+      "status": "active"
+    }
+  ],
+  "departments": [
+    {
+      "departmentId": "DEPT-ENDO",
+      "organizationId": "ORG-WCH",
+      "code": "DEMO-ENDO",
+      "name": "妇科内分泌科（演示）",
+      "status": "active"
+    },
+    {
+      "departmentId": "DEPT-REPRO",
+      "organizationId": "ORG-WCH",
+      "code": "DEMO-REPRO",
+      "name": "生殖医学科（演示）",
+      "status": "active"
+    },
+    {
+      "departmentId": "DEPT-ENDO-WEST",
+      "organizationId": "ORG-WEST",
+      "code": "DEMO-WEST-ENDO",
+      "name": "妇科内分泌科（演示）",
+      "status": "active"
+    }
+  ],
+  "clinicians": [
+    {
+      "clinicianId": "CLN-C001",
+      "displayName": "演示医生 C001",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "status": "active"
+    },
+    {
+      "clinicianId": "CLN-C002",
+      "displayName": "演示医生 C002",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "status": "active"
+    },
+    {
+      "clinicianId": "CLN-C003",
+      "displayName": "演示医生 C003",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "status": "active"
+    },
+    {
+      "clinicianId": "CLN-C004",
+      "displayName": "演示医生 C004",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "status": "active"
+    }
+  ],
+  "users": [
+    {
+      "userId": "USR-DOC-C001",
+      "token": "doctor-c001",
+      "role": "clinician",
+      "displayName": "演示医生 C001",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "userId": "USR-DOC-C002",
+      "token": "doctor-c002",
+      "role": "clinician",
+      "displayName": "演示医生 C002",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    },
+    {
+      "userId": "USR-DOC-C003",
+      "token": "doctor-c003",
+      "role": "clinician",
+      "displayName": "演示医生 C003",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003"
+    },
+    {
+      "userId": "USR-DOC-C004",
+      "token": "doctor-c004",
+      "role": "clinician",
+      "displayName": "演示医生 C004",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C004"
+    },
+    {
+      "userId": "USR-PAT-001",
+      "token": "patient-p001",
+      "role": "patient",
+      "displayName": "演示患者 001",
+      "patientId": "PAT-001"
+    },
+    {
+      "userId": "USR-PAT-003",
+      "token": "patient-p003",
+      "role": "patient",
+      "displayName": "演示患者 003",
+      "patientId": "PAT-003"
+    },
+    {
+      "userId": "USR-DEPT-ENDO",
+      "token": "dept-admin-endo",
+      "role": "department_admin",
+      "displayName": "妇科内分泌科演示管理员",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO"
+    },
+    {
+      "userId": "USR-DEPT-REPRO",
+      "token": "dept-admin-repro",
+      "role": "department_admin",
+      "displayName": "生殖医学科演示管理员",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO"
+    },
+    {
+      "userId": "USR-HOSP-H1",
+      "token": "hospital-admin-h1",
+      "role": "hospital_admin",
+      "displayName": "演示医院 H1 管理员",
+      "organizationId": "ORG-WCH"
+    },
+    {
+      "userId": "USR-HOSP-H2",
+      "token": "hospital-admin-h2",
+      "role": "hospital_admin",
+      "displayName": "演示医院 H2 管理员",
+      "organizationId": "ORG-WEST"
+    },
+    {
+      "userId": "USR-RESEARCH",
+      "token": "researcher-demo",
+      "role": "researcher",
+      "displayName": "演示研究人员"
+    }
+  ],
+  "patients": [
+    {
+      "patientId": "PAT-001",
+      "studyCode": "POI-DEMO-001",
+      "birthYear": 1993,
+      "ageBand": "30-34",
+      "status": "follow_up",
+      "consentStatus": "active"
+    },
+    {
+      "patientId": "PAT-002",
+      "studyCode": "POI-DEMO-002",
+      "birthYear": 1997,
+      "ageBand": "25-29",
+      "status": "enrolled",
+      "consentStatus": "active"
+    },
+    {
+      "patientId": "PAT-003",
+      "studyCode": "POI-DEMO-003",
+      "birthYear": 1988,
+      "ageBand": "35-39",
+      "status": "follow_up",
+      "consentStatus": "active"
+    },
+    {
+      "patientId": "PAT-004",
+      "studyCode": "POI-DEMO-004",
+      "birthYear": 1992,
+      "ageBand": "30-34",
+      "status": "follow_up",
+      "consentStatus": "active"
+    },
+    {
+      "patientId": "PAT-005",
+      "studyCode": "POI-DEMO-005",
+      "birthYear": 1984,
+      "ageBand": "40-44",
+      "status": "screening",
+      "consentStatus": "active"
+    },
+    {
+      "patientId": "PAT-006",
+      "studyCode": "POI-DEMO-006",
+      "birthYear": 1998,
+      "ageBand": "25-29",
+      "status": "follow_up",
+      "consentStatus": "active"
+    },
+    {
+      "patientId": "PAT-007",
+      "studyCode": "POI-DEMO-007",
+      "birthYear": 1989,
+      "ageBand": "35-39",
+      "status": "follow_up",
+      "consentStatus": "active"
+    },
+    {
+      "patientId": "PAT-008",
+      "studyCode": "POI-DEMO-008",
+      "birthYear": 1991,
+      "ageBand": "30-34",
+      "status": "follow_up",
+      "consentStatus": "active"
+    },
+    {
+      "patientId": "PAT-009",
+      "studyCode": "POI-DEMO-009",
+      "birthYear": 1999,
+      "ageBand": "25-29",
+      "status": "follow_up",
+      "consentStatus": "active"
+    },
+    {
+      "patientId": "PAT-010",
+      "studyCode": "POI-DEMO-010",
+      "birthYear": 1985,
+      "ageBand": "40-44",
+      "status": "lost_to_followup",
+      "consentStatus": "active"
+    }
+  ],
+  "careRelationships": [
+    {
+      "relationshipId": "REL-001",
+      "patientId": "PAT-001",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "relationshipType": "primary",
+      "status": "active",
+      "startAt": "2026-01-10",
+      "endAt": null,
+      "source": "study_enrollment"
+    },
+    {
+      "relationshipId": "REL-002",
+      "patientId": "PAT-002",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "relationshipType": "primary",
+      "status": "active",
+      "startAt": "2026-10-10",
+      "endAt": null,
+      "source": "outpatient"
+    },
+    {
+      "relationshipId": "REL-003",
+      "patientId": "PAT-003",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002",
+      "relationshipType": "primary",
+      "status": "active",
+      "startAt": "2026-02-15",
+      "endAt": null,
+      "source": "outpatient"
+    },
+    {
+      "relationshipId": "REL-004",
+      "patientId": "PAT-004",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002",
+      "relationshipType": "primary",
+      "status": "active",
+      "startAt": "2026-03-01",
+      "endAt": null,
+      "source": "study_enrollment"
+    },
+    {
+      "relationshipId": "REL-005",
+      "patientId": "PAT-005",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003",
+      "relationshipType": "primary",
+      "status": "active",
+      "startAt": "2026-04-12",
+      "endAt": null,
+      "source": "outpatient"
+    },
+    {
+      "relationshipId": "REL-006",
+      "patientId": "PAT-006",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003",
+      "relationshipType": "primary",
+      "status": "active",
+      "startAt": "2026-05-20",
+      "endAt": null,
+      "source": "study_enrollment"
+    },
+    {
+      "relationshipId": "REL-007",
+      "patientId": "PAT-007",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002",
+      "relationshipType": "primary",
+      "status": "ended",
+      "startAt": "2026-01-03",
+      "endAt": "2026-06-30",
+      "source": "outpatient"
+    },
+    {
+      "relationshipId": "REL-008",
+      "patientId": "PAT-007",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "relationshipType": "transferred_primary",
+      "status": "active",
+      "startAt": "2026-07-01",
+      "endAt": null,
+      "source": "transfer"
+    },
+    {
+      "relationshipId": "REL-009",
+      "patientId": "PAT-008",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003",
+      "relationshipType": "primary",
+      "status": "ended",
+      "startAt": "2026-01-20",
+      "endAt": "2026-03-31",
+      "source": "outpatient"
+    },
+    {
+      "relationshipId": "REL-010",
+      "patientId": "PAT-008",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "relationshipType": "transferred_primary",
+      "status": "active",
+      "startAt": "2026-04-01",
+      "endAt": null,
+      "source": "transfer"
+    },
+    {
+      "relationshipId": "REL-011",
+      "patientId": "PAT-009",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C004",
+      "relationshipType": "primary",
+      "status": "active",
+      "startAt": "2026-02-20",
+      "endAt": null,
+      "source": "outpatient"
+    },
+    {
+      "relationshipId": "REL-012",
+      "patientId": "PAT-010",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002",
+      "relationshipType": "primary",
+      "status": "active",
+      "startAt": "2026-01-15",
+      "endAt": null,
+      "source": "study_enrollment"
+    }
+  ],
+  "visits": [
+    {
+      "visitId": "VIS-001-01",
+      "patientId": "PAT-001",
+      "visitNo": 0,
+      "visitCode": "BASELINE",
+      "plannedAt": "2026-09-01",
+      "completedAt": "2026-09-01",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "visitId": "VIS-001-02",
+      "patientId": "PAT-001",
+      "visitNo": 4,
+      "visitCode": "W04",
+      "plannedAt": "2026-10-01",
+      "completedAt": "2026-10-02",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "visitId": "VIS-001-03",
+      "patientId": "PAT-001",
+      "visitNo": 12,
+      "visitCode": "W12",
+      "plannedAt": "2026-12-01",
+      "completedAt": null,
+      "status": "planned",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "visitId": "VIS-002-01",
+      "patientId": "PAT-002",
+      "visitNo": 0,
+      "visitCode": "BASELINE",
+      "plannedAt": "2026-10-10",
+      "completedAt": "2026-10-10",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "visitId": "VIS-002-02",
+      "patientId": "PAT-002",
+      "visitNo": 4,
+      "visitCode": "W04",
+      "plannedAt": "2026-11-10",
+      "completedAt": null,
+      "status": "pending",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "visitId": "VIS-002-03",
+      "patientId": "PAT-002",
+      "visitNo": 12,
+      "visitCode": "W12",
+      "plannedAt": "2026-12-10",
+      "completedAt": null,
+      "status": "planned",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "visitId": "VIS-003-01",
+      "patientId": "PAT-003",
+      "visitNo": 0,
+      "visitCode": "BASELINE",
+      "plannedAt": "2026-09-15",
+      "completedAt": "2026-09-15",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    },
+    {
+      "visitId": "VIS-003-02",
+      "patientId": "PAT-003",
+      "visitNo": 4,
+      "visitCode": "W04",
+      "plannedAt": "2026-10-15",
+      "completedAt": null,
+      "status": "overdue",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    },
+    {
+      "visitId": "VIS-003-03",
+      "patientId": "PAT-003",
+      "visitNo": 12,
+      "visitCode": "W12",
+      "plannedAt": "2026-12-15",
+      "completedAt": null,
+      "status": "planned",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    },
+    {
+      "visitId": "VIS-004-01",
+      "patientId": "PAT-004",
+      "visitNo": 0,
+      "visitCode": "BASELINE",
+      "plannedAt": "2026-09-20",
+      "completedAt": "2026-09-20",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    },
+    {
+      "visitId": "VIS-004-02",
+      "patientId": "PAT-004",
+      "visitNo": 4,
+      "visitCode": "W04",
+      "plannedAt": "2026-10-20",
+      "completedAt": "2026-10-22",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    },
+    {
+      "visitId": "VIS-004-03",
+      "patientId": "PAT-004",
+      "visitNo": 12,
+      "visitCode": "W12",
+      "plannedAt": "2026-12-20",
+      "completedAt": null,
+      "status": "planned",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    },
+    {
+      "visitId": "VIS-005-01",
+      "patientId": "PAT-005",
+      "visitNo": 0,
+      "visitCode": "BASELINE",
+      "plannedAt": "2026-09-22",
+      "completedAt": "2026-09-22",
+      "status": "completed",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003"
+    },
+    {
+      "visitId": "VIS-005-02",
+      "patientId": "PAT-005",
+      "visitNo": 4,
+      "visitCode": "W04",
+      "plannedAt": "2026-10-22",
+      "completedAt": null,
+      "status": "pending",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003"
+    },
+    {
+      "visitId": "VIS-005-03",
+      "patientId": "PAT-005",
+      "visitNo": 12,
+      "visitCode": "W12",
+      "plannedAt": "2026-12-22",
+      "completedAt": null,
+      "status": "planned",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003"
+    },
+    {
+      "visitId": "VIS-006-01",
+      "patientId": "PAT-006",
+      "visitNo": 0,
+      "visitCode": "BASELINE",
+      "plannedAt": "2026-10-05",
+      "completedAt": null,
+      "status": "pending",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003"
+    },
+    {
+      "visitId": "VIS-006-02",
+      "patientId": "PAT-006",
+      "visitNo": 4,
+      "visitCode": "W04",
+      "plannedAt": "2026-11-05",
+      "completedAt": null,
+      "status": "overdue",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003"
+    },
+    {
+      "visitId": "VIS-006-03",
+      "patientId": "PAT-006",
+      "visitNo": 12,
+      "visitCode": "W12",
+      "plannedAt": "2026-12-05",
+      "completedAt": null,
+      "status": "planned",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003"
+    },
+    {
+      "visitId": "VIS-007-01",
+      "patientId": "PAT-007",
+      "visitNo": 0,
+      "visitCode": "BASELINE",
+      "plannedAt": "2026-03-15",
+      "completedAt": "2026-03-15",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    },
+    {
+      "visitId": "VIS-007-02",
+      "patientId": "PAT-007",
+      "visitNo": 4,
+      "visitCode": "W04",
+      "plannedAt": "2026-08-01",
+      "completedAt": "2026-08-02",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "visitId": "VIS-007-03",
+      "patientId": "PAT-007",
+      "visitNo": 12,
+      "visitCode": "W12",
+      "plannedAt": "2026-12-01",
+      "completedAt": null,
+      "status": "planned",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "visitId": "VIS-008-01",
+      "patientId": "PAT-008",
+      "visitNo": 0,
+      "visitCode": "BASELINE",
+      "plannedAt": "2026-02-15",
+      "completedAt": "2026-02-15",
+      "status": "completed",
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003"
+    },
+    {
+      "visitId": "VIS-008-02",
+      "patientId": "PAT-008",
+      "visitNo": 4,
+      "visitCode": "W04",
+      "plannedAt": "2026-08-15",
+      "completedAt": "2026-08-16",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "visitId": "VIS-008-03",
+      "patientId": "PAT-008",
+      "visitNo": 12,
+      "visitCode": "W12",
+      "plannedAt": "2026-11-25",
+      "completedAt": null,
+      "status": "pending",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001"
+    },
+    {
+      "visitId": "VIS-009-01",
+      "patientId": "PAT-009",
+      "visitNo": 0,
+      "visitCode": "BASELINE",
+      "plannedAt": "2026-09-02",
+      "completedAt": "2026-09-02",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C004"
+    },
+    {
+      "visitId": "VIS-009-02",
+      "patientId": "PAT-009",
+      "visitNo": 4,
+      "visitCode": "W04",
+      "plannedAt": "2026-10-02",
+      "completedAt": "2026-10-03",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C004"
+    },
+    {
+      "visitId": "VIS-009-03",
+      "patientId": "PAT-009",
+      "visitNo": 12,
+      "visitCode": "W12",
+      "plannedAt": "2026-11-10",
+      "completedAt": null,
+      "status": "overdue",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C004"
+    },
+    {
+      "visitId": "VIS-010-01",
+      "patientId": "PAT-010",
+      "visitNo": 0,
+      "visitCode": "BASELINE",
+      "plannedAt": "2026-08-10",
+      "completedAt": "2026-08-10",
+      "status": "completed",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    },
+    {
+      "visitId": "VIS-010-02",
+      "patientId": "PAT-010",
+      "visitNo": 4,
+      "visitCode": "W04",
+      "plannedAt": "2026-09-10",
+      "completedAt": null,
+      "status": "pending",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    },
+    {
+      "visitId": "VIS-010-03",
+      "patientId": "PAT-010",
+      "visitNo": 12,
+      "visitCode": "W12",
+      "plannedAt": "2026-12-10",
+      "completedAt": null,
+      "status": "planned",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002"
+    }
+  ],
+  "tasks": [
+    {
+      "taskId": "TASK-001",
+      "patientId": "PAT-001",
+      "visitId": "VIS-001-03",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-SURVEY",
+      "title": "完成本月健康随访问卷",
+      "kind": "survey",
+      "dueAt": "2026-11-25",
+      "status": "pending",
+      "completedAt": null,
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "createdBy": "USR-DOC-C001",
+      "createdAt": "2026-11-01T09:00:00+08:00"
+    },
+    {
+      "taskId": "TASK-002",
+      "patientId": "PAT-001",
+      "visitId": "VIS-001-02",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-EDU",
+      "title": "观看本期生殖健康科普",
+      "kind": "education",
+      "dueAt": "2026-10-08",
+      "status": "completed",
+      "completedAt": "2026-10-07T20:10:00+08:00",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "createdBy": "USR-DOC-C001",
+      "createdAt": "2026-10-01T09:00:00+08:00"
+    },
+    {
+      "taskId": "TASK-003",
+      "patientId": "PAT-002",
+      "visitId": "VIS-002-03",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-RECORDS",
+      "title": "回顾并准备近期检查资料",
+      "kind": "records",
+      "dueAt": "2026-12-08",
+      "status": "pending",
+      "completedAt": null,
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "createdBy": "USR-DOC-C001",
+      "createdAt": "2026-11-10T10:00:00+08:00"
+    },
+    {
+      "taskId": "TASK-004",
+      "patientId": "PAT-003",
+      "visitId": "VIS-003-02",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-SURVEY",
+      "title": "完成本月健康随访问卷",
+      "kind": "survey",
+      "dueAt": "2026-11-15",
+      "status": "overdue",
+      "completedAt": null,
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002",
+      "createdBy": "USR-DOC-C002",
+      "createdAt": "2026-10-15T09:00:00+08:00"
+    },
+    {
+      "taskId": "TASK-005",
+      "patientId": "PAT-004",
+      "visitId": "VIS-004-03",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-EDU",
+      "title": "观看本期生殖健康科普",
+      "kind": "education",
+      "dueAt": "2026-11-20",
+      "status": "pending",
+      "completedAt": null,
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002",
+      "createdBy": "USR-DOC-C002",
+      "createdAt": "2026-11-01T09:00:00+08:00"
+    },
+    {
+      "taskId": "TASK-006",
+      "patientId": "PAT-005",
+      "visitId": "VIS-005-02",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-DAILY",
+      "title": "记录近期症状与用药情况",
+      "kind": "daily",
+      "dueAt": "2026-11-18",
+      "status": "pending",
+      "completedAt": null,
+      "organizationId": "ORG-WEST",
+      "departmentId": "DEPT-ENDO-WEST",
+      "clinicianId": "CLN-C003",
+      "createdBy": "USR-DOC-C003",
+      "createdAt": "2026-10-22T09:00:00+08:00"
+    },
+    {
+      "taskId": "TASK-007",
+      "patientId": "PAT-007",
+      "visitId": "VIS-007-01",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-SURVEY",
+      "title": "完成基线健康随访问卷",
+      "kind": "survey",
+      "dueAt": "2026-03-20",
+      "status": "completed",
+      "completedAt": "2026-03-19T16:20:00+08:00",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002",
+      "createdBy": "USR-DOC-C002",
+      "createdAt": "2026-03-15T09:00:00+08:00"
+    },
+    {
+      "taskId": "TASK-008",
+      "patientId": "PAT-007",
+      "visitId": "VIS-007-03",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-EDU",
+      "title": "观看本期生殖健康科普",
+      "kind": "education",
+      "dueAt": "2026-12-01",
+      "status": "pending",
+      "completedAt": null,
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "createdBy": "USR-DOC-C001",
+      "createdAt": "2026-11-01T09:00:00+08:00"
+    },
+    {
+      "taskId": "TASK-009",
+      "patientId": "PAT-008",
+      "visitId": "VIS-008-03",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-DAILY",
+      "title": "记录近期症状与用药情况",
+      "kind": "daily",
+      "dueAt": "2026-11-24",
+      "status": "pending",
+      "completedAt": null,
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "createdBy": "USR-DOC-C001",
+      "createdAt": "2026-11-01T09:00:00+08:00"
+    },
+    {
+      "taskId": "TASK-010",
+      "patientId": "PAT-009",
+      "visitId": "VIS-009-03",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-SURVEY",
+      "title": "完成本月健康随访问卷",
+      "kind": "survey",
+      "dueAt": "2026-11-10",
+      "status": "overdue",
+      "completedAt": null,
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C004",
+      "createdBy": "USR-DOC-C004",
+      "createdAt": "2026-10-10T09:00:00+08:00"
+    },
+    {
+      "taskId": "TASK-011",
+      "patientId": "PAT-010",
+      "visitId": "VIS-010-02",
+      "templateId": "TPL-POI-3M",
+      "itemId": "ITM-DAILY",
+      "title": "记录近期症状与用药情况",
+      "kind": "daily",
+      "dueAt": "2026-11-21",
+      "status": "pending",
+      "completedAt": null,
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002",
+      "createdBy": "USR-DOC-C002",
+      "createdAt": "2026-09-10T09:00:00+08:00"
+    }
+  ],
+  "templates": [
+    {
+      "templateId": "TPL-POI-3M",
+      "name": "POI 三个月随访演示模板",
+      "version": "1.0",
+      "status": "published",
+      "items": [
+        {
+          "itemId": "ITM-DAILY",
+          "title": "记录近期症状与用药情况",
+          "kind": "daily",
+          "dayOffset": 1
+        },
+        {
+          "itemId": "ITM-EDU",
+          "title": "观看本期生殖健康科普",
+          "kind": "education",
+          "dayOffset": 7
+        },
+        {
+          "itemId": "ITM-SURVEY",
+          "title": "完成本月健康随访问卷",
+          "kind": "survey",
+          "dayOffset": 14
+        }
+      ]
+    }
+  ],
+  "questionnaires": [
+    {
+      "bundleId": "BUNDLE-001",
+      "bundleCode": "DEMO-P001-V02",
+      "patientId": "PAT-001",
+      "visitId": "VIS-001-02",
+      "status": "submitted",
+      "dueAt": "2026-10-08",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "taskId": null,
+      "instruments": [
+        {
+          "instrumentId": "KUPPERMAN",
+          "instrumentVersionId": "KUPPERMAN-13-V1",
+          "displayName": "改良 Kupperman 量表（13 项）",
+          "required": true,
+          "questions": [
+            {
+              "questionId": "KUP-01",
+              "prompt": "演示题项 1",
+              "required": true,
+              "options": [
+                { "code": "0", "label": "无" },
+                { "code": "1", "label": "轻" },
+                { "code": "2", "label": "中" },
+                { "code": "3", "label": "重" }
+              ]
+            }
+          ]
+        }
+      ],
+      "submission": {
+        "submissionId": "SUB-001",
+        "submittedAt": "2026-10-07T20:00:00+08:00",
+        "answers": [
+          { "questionId": "KUP-01", "value": "1" }
+        ],
+        "scoreResult": {
+          "total": 1,
+          "ruleVersion": "DEMO-V1"
+        }
+      }
+    },
+    {
+      "bundleId": "BUNDLE-002",
+      "bundleCode": "DEMO-P001-V03",
+      "patientId": "PAT-001",
+      "visitId": "VIS-001-03",
+      "status": "pending",
+      "dueAt": "2026-11-25",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "taskId": "TASK-001",
+      "instruments": [
+        {
+          "instrumentId": "KUPPERMAN",
+          "instrumentVersionId": "KUPPERMAN-13-V1",
+          "displayName": "改良 Kupperman 量表（13 项）",
+          "required": true,
+          "questions": [
+            {
+              "questionId": "KUP-01",
+              "prompt": "演示题项 1",
+              "required": true,
+              "options": [
+                { "code": "0", "label": "无" },
+                { "code": "1", "label": "轻" },
+                { "code": "2", "label": "中" },
+                { "code": "3", "label": "重" }
+              ]
+            },
+            {
+              "questionId": "KUP-02",
+              "prompt": "演示题项 2",
+              "required": true,
+              "options": [
+                { "code": "0", "label": "无" },
+                { "code": "1", "label": "轻" },
+                { "code": "2", "label": "中" },
+                { "code": "3", "label": "重" }
+              ]
+            }
+          ]
+        },
+        {
+          "instrumentId": "SLEEP",
+          "instrumentVersionId": "SLEEP-DEMO-V1",
+          "displayName": "睡眠随访问卷（演示）",
+          "required": true,
+          "questions": [
+            {
+              "questionId": "SLEEP-01",
+              "prompt": "近一周睡眠总体评价",
+              "required": true,
+              "options": [
+                { "code": "0", "label": "很好" },
+                { "code": "1", "label": "一般" },
+                { "code": "2", "label": "较差" }
+              ]
+            }
+          ]
+        }
+      ],
+      "submission": null
+    },
+    {
+      "bundleId": "BUNDLE-003",
+      "bundleCode": "DEMO-P003-V03",
+      "patientId": "PAT-003",
+      "visitId": "VIS-003-03",
+      "status": "pending",
+      "dueAt": "2026-12-15",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-REPRO",
+      "clinicianId": "CLN-C002",
+      "taskId": "TASK-004",
+      "instruments": [
+        {
+          "instrumentId": "KUPPERMAN",
+          "instrumentVersionId": "KUPPERMAN-13-V1",
+          "displayName": "改良 Kupperman 量表（13 项）",
+          "required": true,
+          "questions": [
+            {
+              "questionId": "KUP-01",
+              "prompt": "演示题项 1",
+              "required": true,
+              "options": [
+                { "code": "0", "label": "无" },
+                { "code": "1", "label": "轻" },
+                { "code": "2", "label": "中" },
+                { "code": "3", "label": "重" }
+              ]
+            }
+          ]
+        }
+      ],
+      "submission": null
+    },
+    {
+      "bundleId": "BUNDLE-004",
+      "bundleCode": "DEMO-P002-V02",
+      "patientId": "PAT-002",
+      "visitId": "VIS-002-02",
+      "status": "pending",
+      "dueAt": "2026-11-17",
+      "organizationId": "ORG-WCH",
+      "departmentId": "DEPT-ENDO",
+      "clinicianId": "CLN-C001",
+      "taskId": null,
+      "instruments": [
+        {
+          "instrumentId": "KUPPERMAN",
+          "instrumentVersionId": "KUPPERMAN-13-V1",
+          "displayName": "改良 Kupperman 量表（13 项）",
+          "required": true,
+          "questions": [
+            {
+              "questionId": "KUP-01",
+              "prompt": "演示题项 1",
+              "required": true,
+              "options": [
+                { "code": "0", "label": "无" },
+                { "code": "1", "label": "轻" },
+                { "code": "2", "label": "中" },
+                { "code": "3", "label": "重" }
+              ]
+            }
+          ]
+        }
+      ],
+      "submission": null
+    }
+  ],
+  "messages": [],
+  "auditLog": [],
+  "batchReceipts": []
+}
